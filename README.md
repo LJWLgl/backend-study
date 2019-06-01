@@ -27,7 +27,7 @@
 ### IOC
 - [《Spring IOC 容器源码分析》](https://javadoop.com/post/spring-ioc)
 ### AOP
-- [《Spring AOP 使用介绍，从前世到今生》](https://javadoop.com/post/spring-aop-intro)
+- [《Spring AOP 使用介绍，从前世到今生》](https://javadoop.com/post/spring-aop-intro)
 - [《Spring AOP 源码解析》](https://javadoop.com/post/spring-aop-source)
 ## MyBatis
 # 中间件
