@@ -12,9 +12,12 @@
 ## 集合
 - 【推荐】[《Java7/8 中的 HashMap 和 ConcurrentHashMap 全解析》](https://javadoop.com/post/hashmap)
 - 【推荐】[《Java容器》](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%AE%B9%E5%99%A8.md)
-## 多线程
+## 并发
 - 【推荐】[《Java并发》](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%B9%B6%E5%8F%91.md)
+- [Java中的锁分类](https://www.cnblogs.com/qifengshi/p/6831055.html)
 - [ListenalbeFuture的使用总结](https://juejin.im/post/5cb48bcd6fb9a0687015c9c7)
+### J.U.C组件
+- [Java进阶（七）正确理解Thread Local的原理与适用场景](http://www.jasongj.com/java/threadlocal/)
 ## 虚拟机
 - 【推荐】[Java虚拟机](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA.md)
 ## JDK1.8+
@@ -56,6 +59,9 @@
 ## 服务治理
 ## 分布式一致
 - 【推荐】[分布式](https://github.com/CyC2018/CS-Notes/blob/master/notes/%E5%88%86%E5%B8%83%E5%BC%8F.md)
+# 错误排查
+## Http Client
+- [[踩坑总结] HttpClient默认重试策略不处理SocketTimeoutException](https://juejin.im/entry/5ad0b1116fb9a028c14ae238)
 # Review
 - 【推荐】[《写在19年初的后端社招面试经历(两年经验): 蚂蚁 头条 PingCAP》](https://juejin.im/entry/5c5122fce51d4506093462f6)
 - [《Java面试通关要点汇总集》](https://juejin.im/post/5a94a8ca6fb9a0635c049e67)
