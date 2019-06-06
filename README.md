@@ -10,8 +10,8 @@
 - [《设计模式——模板方法模式的思考》](https://blog.ganzhiqiang.wang/2019/01/13/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%80%9D%E8%80%83/#more)
 # Java基础
 ## 集合
-- 【推荐】[《Java7/8 中的 HashMap 和 ConcurrentHashMap 全解析》](https://javadoop.com/post/hashmap)
-- 【推荐】[《Java容器》](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%AE%B9%E5%99%A8.md)
+- [ArrayList]()
+- [HashMap]()
 ## 并发
 - 【推荐】[《Java并发》](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%B9%B6%E5%8F%91.md)
 - [Java中的锁分类](https://www.cnblogs.com/qifengshi/p/6831055.html)
@@ -77,7 +77,7 @@
 - 《Redis设计与实现》
 # 资料整理
 * [architecture.of.internet-product 互联网公司技术架构，微信/淘宝/微博/腾讯/阿里/美团点评/百度/Google/Facebook/Amazon/eBay的架构](https://github.com/davideuler/architecture.of.internet-product)
-* [📚 CyC Computer Science Learning Notes (技术面试需要掌握的基础知识整理)](https://github.com/CyC2018/CS-Notes)
+* 【推荐】[📚 CyC Computer Science Learning Notes (技术面试需要掌握的基础知识整理)](https://github.com/CyC2018/CS-Notes)
 * [😮 advanced-java 互联网 Java 工程师进阶知识完全扫盲](https://github.com/doocs/advanced-java)
 * [technology-talk 汇总java生态圈常用技术框架、开源中间件，系统架构、项目管理、经典架构案例、数据库、常用三方库、线上运维等知识](https://github.com/aalansehaiyang/technology-talk)
 * [architect-awesome 《后端架构师技术图谱》](https://github.com/xingshaocheng/architect-awesome)
@@ -88,3 +88,4 @@
 * [🎓 Java Core Sprout : basic, concurrent, algorithm](https://github.com/crossoverJie/JCSprout)
 * [j360-tools Java底层知识点、技术栈相关原理知识点、工具最佳实践](https://github.com/xuminwlt/j360-tools)
 * [java-knowledge-mind-map](java-knowledge-mind-map)
+* [technology-talk汇总java生态圈常用技术框架](https://github.com/aalansehaiyang/technology-talk)
