@@ -47,6 +47,8 @@
 ## Mysql
 ## Redis
 - [Redis](https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md#%E5%85%AD%E9%94%AE%E7%9A%84%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4)
+- [https://mrdear.cn/2018/08/19/middleware/redis--study_guide/](https://mrdear.cn/2018/08/19/middleware/redis--study_guide/)
+- [Redis设计与实现](https://redisbook.readthedocs.io/en/latest/index.html)
 ## HBase
 - [《Hbase 技术细节笔记（上）》](https://cloud.tencent.com/developer/article/1006043)
 - [《Hbase 技术细节笔记（下）》](https://cloud.tencent.com/developer/article/1006044)
