@@ -1,5 +1,8 @@
 **随着Java学习的不断深入，发现很多知识在脑海里都是一个个碎片，建此仓库的目的希望把零碎的知识点都整合起来，提高自己的学习效率。**
 # 数据结构
+# 网络基础
+## TCP协议
+- [图解TCP协议中的三次握手和四次挥手](https://www.jianshu.com/p/9968b16b607e)
 ## 树
 ### 红黑树
 ### B、B+、B*树
@@ -69,14 +72,19 @@
 - [《Java面试通关要点汇总集》](https://juejin.im/post/5a94a8ca6fb9a0635c049e67)
 - [《Java Web架构知识整理——记一次阿里面试经历》](https://juejin.im/post/5a45ff4b6fb9a0451b04e052)
 - [《蚂蚁金服面试题及答案之一面（持续更新）》](https://juejin.im/entry/5c8a08b56fb9a049bb7d354d)
+- [一个学渣的阿里之路](https://juejin.im/post/5b2c3a6ef265da597e35a53c)
 # 推荐书籍
 ## Java
 - 《深入理解 Java 虚拟机》
 ## Spring
+### Spring Boot
+- [《Spring MVC 到 Spring Boot 的简化之路》](https://juejin.im/post/5aa22d1f51882555677e2492)
 ## 代码风格
 - 《clean code》
 ## 中间件相关
 - 《Redis设计与实现》
+# 个人成长
+- [如何成为一位「不那么差」的程序员](https://juejin.im/post/5b70cdf6e51d456665220632#heading-19)
 # 资料整理
 * [architecture.of.internet-product 互联网公司技术架构，微信/淘宝/微博/腾讯/阿里/美团点评/百度/Google/Facebook/Amazon/eBay的架构](https://github.com/davideuler/architecture.of.internet-product)
 * 【推荐】[📚 CyC Computer Science Learning Notes (技术面试需要掌握的基础知识整理)](https://github.com/CyC2018/CS-Notes)
@@ -91,3 +99,4 @@
 * [j360-tools Java底层知识点、技术栈相关原理知识点、工具最佳实践](https://github.com/xuminwlt/j360-tools)
 * [java-knowledge-mind-map](java-knowledge-mind-map)
 * [technology-talk汇总java生态圈常用技术框架](https://github.com/aalansehaiyang/technology-talk)
+* [JCSprout)](https://github.com/crossoverJie)

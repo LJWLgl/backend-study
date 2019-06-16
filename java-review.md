@@ -85,6 +85,7 @@
 - BeanFactory 和 ApplicationContext 有什么区别
     - [https://www.zhihu.com/question/38597460](https://www.zhihu.com/question/38597460)
 - Spring Bean 的生命周期
+    - [https://www.cnblogs.com/zrtqsk/p/3735273.html](https://www.cnblogs.com/zrtqsk/p/3735273.html)
 - Spring IOC 如何实现
 - 说说 Spring AOP
 - Spring AOP 实现原理
