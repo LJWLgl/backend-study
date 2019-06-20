@@ -1,9 +1,9 @@
-**随着Java学习的不断深入，发现很多知识在脑海里都是一个个碎片，建此仓库的目的希望把零碎的知识点都整合起来，提高自己的学习效率。**
-# 数据结构
+**随着Java学习的不断深入，发现很多知识在脑海里都是一个个碎片，建此仓库的目的希望把零碎的知识点都整合起来，提高自己的学习效率。欢迎志同道合的朋友，一起来维护该仓库**
 # 网络基础
 ## TCP协议
 - [图解TCP协议中的三次握手和四次挥手](https://www.jianshu.com/p/9968b16b607e)
 ## 树
+### 二叉树
 ### 红黑树
 ### B、B+、B*树
 # 设计模式
@@ -12,8 +12,11 @@
 - [《设计模式——观察者模式的思考》](https://blog.ganzhiqiang.wang/2019/01/20/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%80%9D%E8%80%83/#more)
 - [《设计模式——模板方法模式的思考》](https://blog.ganzhiqiang.wang/2019/01/13/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%80%9D%E8%80%83/#more)
 # Java基础
+## 语法
+- [精选30道Java笔试题解答](https://www.cnblogs.com/lanxuezaipiao/p/3371224.html)
+    - 30道题中包含很多容易在日常开发中日益被忽视的细节
 ## 集合
-- [ArrayList]()
+- [ArrayList](https://juejin.im/post/5a02d2526fb9a04527250558)
 - [HashMap]()
 ## 并发
 - 【推荐】[《Java并发》](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%B9%B6%E5%8F%91.md)
@@ -27,6 +30,8 @@
 - Lamda表达式与Stream流 [《Java Functional Programming Internals》](https://github.com/CarpenterLee/JavaLambdaInternals)
 # 框架
 ## Spring
+- [Spring Bean 生命周期](https://juejin.im/post/5ab1bf19f265da23771947f1)
+- [Spring常用接口和类](https://blog.csdn.net/qq_35830949/article/details/79603622)
 ## Spring Boot
 - [Spring Boot 1.x基础教程](http://blog.didispace.com/spring-boot-learning-1x/)
 - [Spring Boot 2.x基础教程](http://blog.didispace.com/spring-boot-learning-2x/)
@@ -48,6 +53,8 @@
 - 【推荐】[《去哪儿网消息队列设计与实现》](https://www.infoq.cn/article/b4VPvP3m8DA-PM7ZqMGZ?from=timeline&isappinstalled=0)
 # 数据库
 ## Mysql
+- [事务的ACID和四个隔离级别](https://www.jianshu.com/p/b1fbf903f5a0)
+- [MySQL/InnoDB中，乐观锁、悲观锁、共享锁、排它锁、行锁、表锁、死锁概念的理解](https://www.souyunku.com/2018/07/30/mysql/)
 ## Redis
 - [Redis](https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md#%E5%85%AD%E9%94%AE%E7%9A%84%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4)
 - [https://mrdear.cn/2018/08/19/middleware/redis--study_guide/](https://mrdear.cn/2018/08/19/middleware/redis--study_guide/)
@@ -60,6 +67,9 @@
     - 通过散列可以避免热点。
 - [《HBase性能优化方法总结》](http://dxer.github.io/2016/04/01/hbase-optimize/)
 # 分布式设计
+## 分布式锁
+- [基于redis的分布式锁实现](https://juejin.im/entry/5a502ac2518825732b19a595)
+## 分布式限流
 ## 稳定性 & 高可用
 ## 服务治理
 ## 分布式一致
