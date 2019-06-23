@@ -158,7 +158,8 @@ public void levelTraver() {
 
 排序过程如图：
 <div align="center"> <img src="http://tc.ganzhiqiang.wang/bs-1-5.png" width="400px"> <p>图1-5 直接插入排序过程</p> </div><br/>
-```Java
+
+```java
 /**
  * 直接插入排序
  * @param array 待排序数据
@@ -220,13 +221,15 @@ public static void quickSort(int[] arr, int low, int high) {
 - 很难用于链式结构
 ## 堆排序
 堆排序是利用了完全二叉树的性质：`树中所有非终节点均不大于（或不小于）其左右孩子节点的值`，堆排序分为两步`建初堆`和`调整堆`，它们都利用`筛选法`来实现。
-筛选法的算法步骤：
+
+**筛选法的算法步骤：**
 从r[2s]和r[2s+1]中选出较大的，假设r[2s]较大，则比较r[s]和r[2s]的大小：
 1. 若r[s]  >= r[2s]，说明以r[s]为根的子堆已是大根堆（小根堆），不做任何调整。
 2. 若r[s]  < r[2s]，则s=2s，r[s] = r[2s]，即继续向下筛选，重复以上过程，直至到叶子节点。  
 
 **用筛选法调整堆：**
 <div align="center"> <img src="http://tc.ganzhiqiang.wang/1-6.png" width="500px"><p>图1-6 筛选法</p> </div><br/>
+
 ```java
 public class HeapSort {
     private static int length; // 数组长度
@@ -272,6 +275,7 @@ public class HeapSort {
     }
 }
 ```
+
 # 二叉树
 ## 二叉排序树（二叉搜索树）
 ## 平衡二叉树（AVL树）
