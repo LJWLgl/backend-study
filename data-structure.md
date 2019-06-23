@@ -16,7 +16,7 @@ public class TreeNode<T> {
 ```
 ### 创建二叉树
 二叉树的创建一般采用前序遍历，下面代码是创建如图所示的二叉树，其中`“#”`代表`null`
-<div align="center"> <img src="http://tc.ganzhiqiang.wang/binaytree1.png" width="400px"><p>图1-1</p> </div>
+<div align="center"> <img src="http://tc.ganzhiqiang.wang/binaytree1.png" width="400px"><p>图1-1</p> </div><br/>
 ```java
 public BinaryTree() {
     Scanner scanner = new Scanner("1 2 4 8 # # 9 # # 5 # # 3 6 # # 7 # #");
@@ -50,7 +50,7 @@ public void preTraver(TreeNode<T> node) {
 }
 ```
 前序非递归算法使用栈来实现，思想就是先将根节点和根节点全部入栈，再逐个弹出栈顶元素，将栈顶元素的右子树也全部入栈，直至栈为空，步骤如图所示
-<div align="center"> <img src="http://tc.ganzhiqiang.wang/prebintree.jpg" width="400px"> <p>图1-2</p></div>
+<div align="center"> <img src="http://tc.ganzhiqiang.wang/prebintree.jpg" width="400px"> <p>图1-2</p></div><br/>
 ```java
 /**
  * 先序遍历非递归
@@ -155,7 +155,7 @@ public void levelTraver() {
 直接插入排序是一种最简单的排序方法，其基本操作是将记录一条记录插入到已排好序的有序表中，从而得到一个新的，记录数量增1的有序表
 
 排序过程如图：
-<div align="center"> <img src="http://tc.ganzhiqiang.wang/1560068871.png" width="500px"> <p>图1-5</p> </div>
+<div align="center"> <img src="http://tc.ganzhiqiang.wang/bs-1-5.png" width="400px"> <p>图1-5 直接插入排序过程</p> </div><br/>
 ```Java
 /**
  * 直接插入排序
@@ -209,7 +209,7 @@ public static void quickSort(int[] arr, int low, int high) {
 ```
 **算法复杂度** 
 - 时间复杂度：O(nlog2n)
-- 空间复杂度：O(n)
+- 空间复杂度：O(n)  
 **算法特点**
 - 非稳定排序
 - 当n较大时，在平均情况下快速排序是所有内部排序中最快的
@@ -223,7 +223,7 @@ public static void quickSort(int[] arr, int low, int high) {
 1. 若r[s]  >= r[2s]，说明以r[s]为根的子堆已是大根堆（小根堆），不做任何调整。
 2. 若r[s]  < r[2s]，则s=2s，r[s] = r[2s]，即继续向下筛选，重复以上过程，直至到叶子节点。
 **用筛选法调整堆：**
-<div align="center"> <img src="http://tc.ganzhiqiang.wang/1-6.png" width="500px"><p>图1-6 筛选法</p> </div>
+<div align="center"> <img src="http://tc.ganzhiqiang.wang/1-6.png" width="500px"><p>图1-6 筛选法</p> </div><br/>
 ```java
 public class HeapSort {
     private static int length; // 数组长度
