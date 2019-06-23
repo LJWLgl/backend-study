@@ -1,5 +1,34 @@
 # 二叉树
+<div align="center"> <img src="111.png" width="300px"> </div>
 ## 二叉遍历
+```java
+/**
+ * 递归先序遍历
+ */
+public void preTraver(TreeNode<T> node) {
+    if (node != null) {
+        System.out.print(node.getValue() + " ");
+        preTraver(node.getLeft());
+        preTraver(node.getRight());
+    }
+}
+/**
+ * 先序遍历非递归
+ */
+public void preTraver() {
+    Stack<TreeNode> stack = new Stack<>();
+    TreeNode node = root;
+    while (node != null || ! stack.isEmpty()) {
+        while (node != null) { // 将根节点和左子树的根节点入栈，直到左子树为空
+            System.out.print(node.getValue() + " ");
+            stack.push(node);
+            node = node.getLeft();
+        }
+        node = stack.pop();
+        node = node.getRight();
+    }
+}
+```
 ### 前序遍历
 ### 中序遍历
 ### 后序遍历
