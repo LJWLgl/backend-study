@@ -16,7 +16,8 @@ public class TreeNode<T> {
 ```
 ### 创建二叉树
 二叉树的创建一般采用前序遍历，下面代码是创建如图所示的二叉树，其中`“#”`代表`null`
-<div align="center"> <img src="http://tc.ganzhiqiang.wang/binaytree1.png" width="400px"><p>图1-1</p> </div><br/>
+<div align="center"> <img src="http://tc.ganzhiqiang.wang/binaytree1.png" width="400px"><p>图1-1</p> </div><br/>  
+
 ```java  
 
 public BinaryTree() {
