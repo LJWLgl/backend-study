@@ -222,6 +222,7 @@ public static void quickSort(int[] arr, int low, int high) {
 从r[2s]和r[2s+1]中选出较大的，假设r[2s]较大，则比较r[s]和r[2s]的大小：
 1. 若r[s]  >= r[2s]，说明以r[s]为根的子堆已是大根堆（小根堆），不做任何调整。
 2. 若r[s]  < r[2s]，则s=2s，r[s] = r[2s]，即继续向下筛选，重复以上过程，直至到叶子节点。  
+
 **用筛选法调整堆：**
 <div align="center"> <img src="http://tc.ganzhiqiang.wang/1-6.png" width="500px"><p>图1-6 筛选法</p> </div><br/>
 ```java
