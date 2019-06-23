@@ -50,7 +50,7 @@ public void preTraver(TreeNode<T> node) {
     }
 }
 ```
-前序非递归算法使用栈来实现，思想就是先将根节点和根节点全部入栈，再逐个弹出栈顶元素，将栈顶元素的右子树也全部入栈，直至栈为空，步骤如图所示
+前序非递归算法使用栈来实现，思想就是先将根节点和左子树全部入栈，再逐个弹出栈顶元素，将栈顶元素的右子树也全部入栈，直至栈为空，步骤如图所示
 <div align="center"> <img src="http://tc.ganzhiqiang.wang/prebintree.jpg" width="400px"> <p>图1-2</p></div><br/>
 
 ```java
