@@ -275,7 +275,41 @@ public class HeapSort {
     }
 }
 ```
+## 归并排序
+归并排序使用递归，将数据序列分为越来越小的子序列，再对子序列排序，通过回溯将子序列归并成越来越大的序列，最终完成对序列的排序，基本流程如下图所示：
+<div align="center"> <img src="http://tc.ganzhiqiang.wang/bs-1-7.png" width="500px"><p>图1-6 归并过程</p> </div><br/>
 
+```java
+public void merge(int[] a, int low, int mid, int high) {
+    int[] temp = new int[high - low + 1];
+    int k = 0, i = low, j = mid + 1;
+    while (i <= mid && j <= high) { // 将较小的数移到新数组
+        if (a[i] <= a[j]) {
+            temp[k++] = a[i++];
+        } else {
+            temp[k++] = a[j++];
+        }
+    }
+    while (i <= mid) { // 将左边剩余的移到新数组
+        temp[k++] = a[i++];
+    }
+    while (j <= high) { // 将右边剩余的移到新数组
+        temp[k++] = a[j++];
+    }
+    for (int p=0;p < temp.length; p++) { // 归并好新数组复制到原数组
+        a[low + p] = temp[p];
+    }
+}
+
+public void mergeSort(int[] a, int low, int high) {
+    int mid = (low + high)/2;
+    if (low < high) {
+        mergeSort(a, low, mid); 
+        mergeSort(a, mid + 1, high);
+        merge(a, low, mid, high);
+    }
+}
+```
 # 二叉树
 ## 二叉排序树（二叉搜索树）
 ## 平衡二叉树（AVL树）
