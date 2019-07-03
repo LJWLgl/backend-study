@@ -48,6 +48,8 @@
 - [《ES Java客户端对比》](http://www.gaowm.com/2018/02/06/Elasticsearch-%E4%BA%94-java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%8B%E7%BB%8D/)
 ## 消息队列
 ### Kafka
+- [Kafka设计解析](http://www.jasongj.com/2015/03/10/KafkaColumn1/)
+- [Kafka技术原理](https://cshihong.github.io/2018/06/02/Kafka%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/)
 ### QMQ
 去哪儿和携程内部使用的消息队列
 - 【推荐】[《去哪儿网消息队列设计与实现》](https://www.infoq.cn/article/b4VPvP3m8DA-PM7ZqMGZ?from=timeline&isappinstalled=0)
