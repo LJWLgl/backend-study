@@ -57,6 +57,9 @@
 ## Mysql
 - [事务的ACID和四个隔离级别](https://www.jianshu.com/p/b1fbf903f5a0)
 - [MySQL/InnoDB中，乐观锁、悲观锁、共享锁、排它锁、行锁、表锁、死锁概念的理解](https://www.souyunku.com/2018/07/30/mysql/)
+- [Mysql主从同步的原理](https://segmentfault.com/a/1190000008663001)
+- [Mysql B+树学习](https://juejin.im/post/59bf5cf65188252f92381fe5)
+- [为什么MySQL数据库索引选择使用B+树？](https://blog.csdn.net/xlgen157387/article/details/79450295)
 ## Redis
 - [Redis](https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md#%E5%85%AD%E9%94%AE%E7%9A%84%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4)
 - [https://mrdear.cn/2018/08/19/middleware/redis--study_guide/](https://mrdear.cn/2018/08/19/middleware/redis--study_guide/)
