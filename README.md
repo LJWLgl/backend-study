@@ -2,6 +2,9 @@
 # 网络基础
 ## TCP协议
 - [图解TCP协议中的三次握手和四次挥手](https://www.jianshu.com/p/9968b16b607e)
+## HTTP/HTTPS
+- [HTTPS加密原理](https://juejin.im/entry/5a9ac15bf265da239e4d8831)
+# 数据结构
 ## 树
 ### 二叉树
 ### 红黑树
@@ -17,7 +20,9 @@
     - 30道题中包含很多容易在日常开发中日益被忽视的细节
 ## 集合
 - [ArrayList](https://juejin.im/post/5a02d2526fb9a04527250558)
-- [HashMap]()
+### HashMap
+- [HashMap? ConcurrentHashMap? 相信看完这篇没人能难住你！](https://crossoverjie.top/2018/07/23/java-senior/ConcurrentHashMap/)
+- [Java7/8 中的 HashMap 和 ConcurrentHashMap 全解析](https://javadoop.com/post/hashmap)
 ## 并发
 - 【推荐】[《Java并发》](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%B9%B6%E5%8F%91.md)
 - [Java中的锁分类](https://www.cnblogs.com/qifengshi/p/6831055.html)
@@ -28,10 +33,13 @@
 - 【推荐】[Java虚拟机](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA.md)
 ## JDK1.8+
 - Lamda表达式与Stream流 [《Java Functional Programming Internals》](https://github.com/CarpenterLee/JavaLambdaInternals)
+## JDK发展
+- [Java 5，6，7，8，9，10，11新特性吐血总结](https://www.jianshu.com/p/38985b61ea83)
 # 框架
 ## Spring
 - [Spring Bean 生命周期](https://juejin.im/post/5ab1bf19f265da23771947f1)
 - [Spring常用接口和类](https://blog.csdn.net/qq_35830949/article/details/79603622)
+- [SpringMVC执行流程及工作原理](https://www.jianshu.com/p/8a20c547e245)
 ## Spring Boot
 - [Spring Boot 1.x基础教程](http://blog.didispace.com/spring-boot-learning-1x/)
 - [Spring Boot 2.x基础教程](http://blog.didispace.com/spring-boot-learning-2x/)
@@ -55,7 +63,7 @@
 - 【推荐】[《去哪儿网消息队列设计与实现》](https://www.infoq.cn/article/b4VPvP3m8DA-PM7ZqMGZ?from=timeline&isappinstalled=0)
 # 数据库
 ## Mysql
-- [事务的ACID和四个隔离级别](https://www.jianshu.com/p/b1fbf903f5a0)
+- [x] [事务的ACID和四个隔离级别](https://www.jianshu.com/p/b1fbf903f5a0)
 - [MySQL/InnoDB中，乐观锁、悲观锁、共享锁、排它锁、行锁、表锁、死锁概念的理解](https://www.souyunku.com/2018/07/30/mysql/)
 - [Mysql主从同步的原理](https://segmentfault.com/a/1190000008663001)
 - [Mysql B+树学习](https://juejin.im/post/59bf5cf65188252f92381fe5)
