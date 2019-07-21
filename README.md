@@ -9,6 +9,7 @@
 ### 二叉树
 ### 红黑树
 ### B、B+、B*树
+- [平衡二叉树、B树、B+树、B*树 理解其中一种你就都明白了](https://zhuanlan.zhihu.com/p/27700617)
 # 设计模式
 ### 行为型模式
 - [《设计模式——代理模式的思考》](https://blog.ganzhiqiang.wang/2019/02/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%80%9D%E8%80%83/#more)
@@ -40,6 +41,7 @@
 - [Spring Bean 生命周期](https://juejin.im/post/5ab1bf19f265da23771947f1)
 - [Spring常用接口和类](https://blog.csdn.net/qq_35830949/article/details/79603622)
 - [SpringMVC执行流程及工作原理](https://www.jianshu.com/p/8a20c547e245)
+- 【专栏】[JavaEE企业级分布式架构核心技术](https://zhuanlan.zhihu.com/p/41274946)
 ## Spring Boot
 - [Spring Boot 1.x基础教程](http://blog.didispace.com/spring-boot-learning-1x/)
 - [Spring Boot 2.x基础教程](http://blog.didispace.com/spring-boot-learning-2x/)
@@ -63,7 +65,7 @@
 - 【推荐】[《去哪儿网消息队列设计与实现》](https://www.infoq.cn/article/b4VPvP3m8DA-PM7ZqMGZ?from=timeline&isappinstalled=0)
 # 数据库
 ## Mysql
-- [x] [事务的ACID和四个隔离级别](https://www.jianshu.com/p/b1fbf903f5a0)
+- [事务的ACID和四个隔离级别](https://www.jianshu.com/p/b1fbf903f5a0)
 - [MySQL/InnoDB中，乐观锁、悲观锁、共享锁、排它锁、行锁、表锁、死锁概念的理解](https://www.souyunku.com/2018/07/30/mysql/)
 - [Mysql主从同步的原理](https://segmentfault.com/a/1190000008663001)
 - [Mysql B+树学习](https://juejin.im/post/59bf5cf65188252f92381fe5)

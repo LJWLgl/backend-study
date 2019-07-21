@@ -4,5 +4,6 @@ configs/
 .markeditor/
 .markeditor/file_manager_status.config
 .markeditor/file_manager_status.config
+.markeditor/file_manager_status.config
 .sync/
 .DS_Store

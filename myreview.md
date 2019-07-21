@@ -34,3 +34,26 @@ public T pop() {
 做完之后，面试官没说什么，只是让我等一下，然后 and 然后。。。，HR就来了，然后就被告知面试未通过，说技术栈不符合他们的要求，真是一脸懵逼啊（不符合你们技术栈，还让我来面试。。）
 ### 总结
 拼多多给笔者感觉太注重业务，也可能是技术栈不符合人家要求，人家也不知道怎么问（手动狗头）
+## 2019.7携程IBU（国际事业部）
+### 一面
+- 线程池`submit()`与`execute()`区别
+- 线程池有哪几种缓冲队列？`LinkedBlockingQueue`和`ArrayBlockingQueue`的区别？
+- `@Component`与`@Configuration`注解的区别？
+- 描述一下Spring Boot启动原理
+-  Spring boot中jar包与war包区别？
+    - [https://www.cnblogs.com/cag2050/p/7833541.html](https://www.cnblogs.com/cag2050/p/7833541.html)
+- 是否阅读过Flink源码？
+- linux中拷贝命令是哪一个？
+### 二面
+- SQL慢查询如何定位和优化
+- 发起
+- 线程池如何配置？是否配置过拒绝策略
+### 三面
+- 堆排序如何实现
+- Spring事务实现原理
+- Redis跳跃表的实现
+### HR
+### 2019.7大搜车一面
+
+
+
