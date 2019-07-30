@@ -42,6 +42,8 @@
 - [Spring常用接口和类](https://blog.csdn.net/qq_35830949/article/details/79603622)
 - [SpringMVC执行流程及工作原理](https://www.jianshu.com/p/8a20c547e245)
 - 【专栏】[JavaEE企业级分布式架构核心技术](https://zhuanlan.zhihu.com/p/41274946)
+- 【推荐】[Spring IoC容器初的初始化过程](https://my.oschina.net/mindfind/blog/918515)
+- [spring是如何解决循环依赖的？](https://juejin.im/post/5c98a7b4f265da60ee12e9b2)
 ## Spring Boot
 - [Spring Boot 1.x基础教程](http://blog.didispace.com/spring-boot-learning-1x/)
 - [Spring Boot 2.x基础教程](http://blog.didispace.com/spring-boot-learning-2x/)
@@ -124,4 +126,5 @@
 * [j360-tools Java底层知识点、技术栈相关原理知识点、工具最佳实践](https://github.com/xuminwlt/j360-tools)
 * [java-knowledge-mind-map](java-knowledge-mind-map)
 * [technology-talk汇总java生态圈常用技术框架](https://github.com/aalansehaiyang/technology-talk)
-* [JCSprout)](https://github.com/crossoverJie)
+* [JCSprout](https://github.com/crossoverJie)
+- [3y](https://github.com/ZhongFuCheng3y/3y/)
