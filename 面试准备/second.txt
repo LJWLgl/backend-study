@@ -1,0 +1,169 @@
+## 搜索
+第一天
+- 填补简历中的坑，
+- 分词插件
+- es分词器
+- Trie树build的速度
+第二天
+- 总结es面试题、es常用查询复习
+第三天
+- 准备面试常规题
+第四天
+
+
+# 面试题
+### 自定义插件的相关问题
+1. 为什么要自定义开发es插件
+答：原因有以下几点
+- 产品希望能支持自定义的专业词库，现在用日语词库，都是我们自己整理的
+- es自带的kuromoji插件分词效果不是很好
+2. 开发lucene插件核心类是什么？
+
+   答：Analyzer类和TokenStream类型
+
+3. 在开发自定义有遇到问题吗？
+   答：
+
+## es相关面试题
+
+**es基础**
+
+1. Lucene、solr以及elasticsearch之间的区别
+
+   答：https://cloud.tencent.com/developer/article/1184361
+
+2. 说一下es的分布式架构原理 / es是如何实现分布式的
+
+   答：https://mp.weixin.qq.com/s/3D6ikLDrPHpKsU6RSz012Q（第一点）
+
+3. 说一下es的写入数据流程以及底层原理
+
+   答：https://mp.weixin.qq.com/s/h3AVAKpepGzbmKG5x-KNzg
+
+4. elasticsearch了解多少，说说你们公司 es 的集群架构，索引数据大小，分片有多少，以及一些调优手段 。
+
+   答：我们es采用双机房单集群部署，每个集群三台物理机，后期打算迁往k8s
+
+   目前es部署情况：3个master节点，6个data节点，30+索引，每个索引6分片1副本，目前最大索引是酒店的有500G，600w条数据
+
+   调优手段：
+
+   - 设计阶段调优
+
+     （1）对于需要分词的字段，设置合理的分词器；
+
+     （2）使用别名进行索引管理；
+
+     （3）禁止os将es进程swap出去；
+
+     ​		 swap原理是将磁盘当做虚拟内存来使用，会极大降低es查询效率；
+
+     （4）使用自动生成的id（auto-generated ids）；
+
+     ​         索引具有显式id的文档时，Elasticsearch需要检查具有相同id的文档是否已经存在于相同的分片中，这是昂贵的操作，并随着索引增长而变得更加昂贵。 通过使用自动生成的ID，Elasticsearch可以跳过这个检查，这使索引更快
+
+   - 写入调优
+
+     （1）写入前副本数设置为0；
+
+     （2）写入前关闭 refresh_interval 设置为-1，禁用刷新机制；
+
+   还有一些调优方式，请参考：[ES官方调优指南翻译](http://wangnan.tech/post/elasticsearch-how-to/)
+
+5. es有几种node？每个node职责和作用是怎样的？
+
+   答：es主要有4种节点类型，分别是master、data、coordinating（协作节点）、ingest，对应职责分别如下：
+
+   - master：主要负责集群中索引的创建、删除以及数据的Rebalance等操作。
+   - data：主要负责集群中数据的索引和检索。
+   - coordinating：协调各数据节点，回应客户端请求，比如搜索请求。
+   - ingest：专门对索引的文档做预处理，实际中不常用，除非文档在索引之前有大量的预处理工作需要做。
+
+   详细参考
+
+   - https://www.elastic.co/guide/en/elasticsearch/reference/master/ingest.html#ingest
+
+   - [Elasticsearch（ES）集群中节点的角色](https://www.jianshu.com/p/7c4818dda91a)
+   - [[Elasticsearch配置项(二)]Node,Threadpool模块配置](https://yemengying.com/2016/03/21/elasticsearch-settings2/)
+
+   
+
+6. elasticsearch的倒排索引是什么？
+
+   答：倒排索引，是通过分词策略，形成了词和文章的映射关系表，这种词典+映射表即为倒排索引。有了倒排索引，就能实现 o（1）时间复杂度的效率检索文章了，极大的提高了检索效率。
+
+   ![](http://tc.ganzhiqiang.wang/1598759075.png?imageMogr2/thumbnail/!70p)
+
+   加分项：倒排索引的底层实现是基于：FST（Finite State Transducer）数据结构，类似Trie树的数据结构。
+
+   lucene 从 4+版本后开始大量使用的数据结构是 FST。FST 有两个优点：
+
+   （1）空间占用小。通过对词典中单词前缀和后缀的重复利用，压缩了存储空间；
+
+   （2）查询速度快。O(len(str))的查询时间复杂度。
+
+7. Elasticsearch 是如何实现 Master 选举的？
+
+   答：那我说一下初始启动场景下，es的master选举过程，假设有三个节点node1，node2，node3。node1启动的时候，执行findMaster()，node1发现只有自己一个node，不满足节点数大于n/2+1的条件（n是参数minimum_master_nodes配置），所以此时找不到master， node1会不断的执行while循环直到找到master位置。然后node2上线，node1和node2构成了两个节点，node2选举自己作为master节点, 此时node2通过ping可以发现node1, 所以两个master候选节点，满足配置条件，故node2就成为master。
+
+   参考：[Elasticsearch的选举机制](https://www.jianshu.com/p/bba684897544)
+
+8. 详细描述一下es的搜索流程？
+
+   答：es搜索流程主要为“query-then-fetch”
+
+   - 客户端发送请求到一个协调节点（coordinate node）
+   - 协调节点将搜索请求转发到所有的shard对应的主分片（primary shard）或副分片（replica shard）
+   - query phase 每个shard将自己的搜索结果（本质上就是一些doc id），返回给 协调节点（coordinate node），由协调节点（coordinate node）进行数据的合并、排序、分页等，以生成最终结果
+   - fetch phase 接着由协调节点（coordinate node），根据doc id去各节点中拉取实际的 `document`数据,最终返回给客户端
+
+9. 详细描述一下es的索引过程？
+
+   - 客户写集群某节点写入数据，发送请求。（如果没有指定路由/协调节点，请求的节点扮演路由节点的角色。）
+
+   - 节点 1 接受到请求后，使用文档_id 来确定文档属于分片 0。请求会被转到另外的节点，假定节点 3。因此分片 0 的主分片分配到节点 3 上。
+
+   - 节点 3 在主分片上执行写操作，如果成功，则将请求并行转发到节点 1和节点 2 的副本分片上，等待结果返回。所有的副本分片都报告成功，节点 3 将向协调节点（节点 1）报告成功，节点 1 向请求客户端报告写入成功。
+
+   如果面试官再问：第二步中的文档获取分片的过程？
+
+   回答：借助路由算法获取，路由算法就是根据路由和文档 id 计算目标的分片 id 的过程。
+
+   ```java
+   1shard = hash(_routing) % (num_of_primary_shards)
+   ```
+
+   10. 能在再详细索引时分片内部的过程吗？
+
+       - 当分片所在的节点接收到来自协调节点的请求后，会将请求写入到 MemoryBuffer，然后定时（默认是每隔 1 秒）写入到 Filesystem Cache，这个从 MomeryBuffer 到 Filesystem Cache 的过程就叫做 refresh；
+
+       - 当然在某些情况下，存在 Momery Buffer 和 Filesystem Cache 的数据可能会丢失，ES 是通过 translog 的机制来保证数据的可靠性的。其实现机制是接收到请求后，同时也会写入到 translog 中 ，当 Filesystem cache 中的数据写入到磁盘中时，才会清除掉，这个过程叫做 flush；
+
+       - 在 flush 过程中，内存中的缓冲将被清除，内容被写入一个新段，段的 fsync将创建一个新的提交点，并将内容刷新到磁盘，旧的 translog 将被删除并开始一个新的 translog。
+
+       - flush 触发的时机是定时触发（默认 30 分钟）或者 translog 变得太大（默认为 512M）时；
+
+       大致流程
+
+       <img src="http://tc.ganzhiqiang.wang/es-shard1.png?imageMogr2/thumbnail/!70p" style="zoom:18%;" />
+
+**es查询语句相关**
+
+1. es常用的查询语句有哪些
+
+   答：[https://chenjiabing666.github.io/2018/09/02/es%E5%90%84%E7%A7%8D%E6%9F%A5%E8%AF%A2/](https://chenjiabing666.github.io/2018/09/02/es各种查询/)
+
+2. 你们前缀查询为什么用edge_ngram，不用prefix查询？
+
+   答：主要是因为prefix查询的性能比较差，需要遍历索引。它类似一个过滤器，不会计算相关性得分，当数据量较小时可以使用。
+
+## 算法面试题
+
+1. Double Array Trie树的公式是什么？
+
+   答：base[s] + c = t 且 check[t] = s，其中s为父节点位置，s为子节点位置
+
+## 参考文档
+
+- [2019年常见ElasticSearch 面试题解析（上）](https://juejin.im/post/6844904031555420167)
+- [2019年常见Elasticsearch 面试题答案详细解析（下）](https://juejin.im/post/6844904032083902471)
