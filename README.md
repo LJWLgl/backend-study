@@ -7,6 +7,9 @@
 # 数据结构
 ## 树
 ### 二叉树
+
+- [3 分钟理解完全二叉树、平衡二叉树、二叉查找树](https://juejin.im/entry/6844903606408183815)
+
 ### 红黑树
 ### B、B+、B*树
 - [平衡二叉树、B树、B+树、B*树 理解其中一种你就都明白了](https://zhuanlan.zhihu.com/p/27700617)
@@ -25,13 +28,26 @@
 - [HashMap? ConcurrentHashMap? 相信看完这篇没人能难住你！](https://crossoverjie.top/2018/07/23/java-senior/ConcurrentHashMap/)
 - [Java7/8 中的 HashMap 和 ConcurrentHashMap 全解析](https://javadoop.com/post/hashmap)
 ## 并发
+
 - 【推荐】[《Java并发》](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%B9%B6%E5%8F%91.md)
 - [Java中的锁分类](https://www.cnblogs.com/qifengshi/p/6831055.html)
 - [ListenalbeFuture的使用总结](https://juejin.im/post/5cb48bcd6fb9a0687015c9c7)
+### Synchronized
+
+- [Java经典面试题，你用过synchronized吗？它的底层原理是什么？](https://juejin.im/entry/6844904047430860813)
+
+- [深入分析Synchronized原理(阿里面试题)](https://www.cnblogs.com/aspirant/p/11470858.html)
+
 ### J.U.C组件
 - [Java进阶（七）正确理解Thread Local的原理与适用场景](http://www.jasongj.com/java/threadlocal/)
 ## 虚拟机
+
 - 【推荐】[Java虚拟机](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA.md)
+### JVM调优
+
+- [jvm优化必知系列——监控工具](https://juejin.im/post/6844903504402726920)
+
+  
 ## JDK1.8+
 - Lamda表达式与Stream流 [《Java Functional Programming Internals》](https://github.com/CarpenterLee/JavaLambdaInternals)
 ## JDK发展
@@ -67,12 +83,15 @@
 - 【推荐】[《去哪儿网消息队列设计与实现》](https://www.infoq.cn/article/b4VPvP3m8DA-PM7ZqMGZ?from=timeline&isappinstalled=0)
 # 数据库
 ## Mysql
+
+- [Mysql](https://github.com/CyC2018/CS-Notes/blob/master/notes/MySQL.md)
 - [事务的ACID和四个隔离级别](https://www.jianshu.com/p/b1fbf903f5a0)
 - [MySQL/InnoDB中，乐观锁、悲观锁、共享锁、排它锁、行锁、表锁、死锁概念的理解](https://www.souyunku.com/2018/07/30/mysql/)
 - [Mysql主从同步的原理](https://segmentfault.com/a/1190000008663001)
 - [Mysql B+树学习](https://juejin.im/post/59bf5cf65188252f92381fe5)
 - [为什么MySQL数据库索引选择使用B+树？](https://blog.csdn.net/xlgen157387/article/details/79450295)
 - [MySQL 表锁和行锁机制](https://juejin.im/entry/5a55c7976fb9a01cba42786f)
+- [常见mysql的慢查询优化方式](https://cloud.tencent.com/developer/article/1545163)
 ## Redis
 - [Redis](https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md#%E5%85%AD%E9%94%AE%E7%9A%84%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4)
 - [https://mrdear.cn/2018/08/19/middleware/redis--study_guide/](https://mrdear.cn/2018/08/19/middleware/redis--study_guide/)
@@ -92,7 +111,14 @@
 ## 服务治理
 ## 分布式一致
 - 【推荐】[分布式](https://github.com/CyC2018/CS-Notes/blob/master/notes/%E5%88%86%E5%B8%83%E5%BC%8F.md)
+# 思想设计
+
+## 领域模型
+
+[阿里盒马领域驱动设计实践](https://www.infoq.cn/article/alibaba-freshhema-ddd-practice)
+
 # 错误排查
+
 ## Http Client
 - [[踩坑总结] HttpClient默认重试策略不处理SocketTimeoutException](https://juejin.im/entry/5ad0b1116fb9a028c14ae238)
 # Review
@@ -114,6 +140,7 @@
 # 个人成长
 - [如何成为一位「不那么差」的程序员](https://juejin.im/post/5b70cdf6e51d456665220632#heading-19)
 # 资料整理
+
 * [architecture.of.internet-product 互联网公司技术架构，微信/淘宝/微博/腾讯/阿里/美团点评/百度/Google/Facebook/Amazon/eBay的架构](https://github.com/davideuler/architecture.of.internet-product)
 * 【推荐】[📚 CyC Computer Science Learning Notes (技术面试需要掌握的基础知识整理)](https://github.com/CyC2018/CS-Notes)
 * [😮 advanced-java 互联网 Java 工程师进阶知识完全扫盲](https://github.com/doocs/advanced-java)

@@ -1,5 +1,10 @@
 # ES基础
 
+数据结构
+
+- [Day 7 - Elasticsearch中数据是如何存储的](https://elasticsearch.cn/article/6178)
+- [lucene字典实现原理——FST](https://www.cnblogs.com/bonelee/p/6226185.html)
+
 ## ES源码
 ### lucnce源码
 - [Intellij idea搭建solr源码debug调试环境](http://qianjiasong.com/post/solr-debug-idea-build/)

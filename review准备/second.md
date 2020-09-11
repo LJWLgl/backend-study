@@ -1,18 +1,21 @@
-## 搜索
-第一天
-- 填补简历中的坑，
-- 分词插件
-- es分词器
-- Trie树build的速度
-第二天
-- 总结es面试题、es常用查询复习
-第三天
-- 准备面试常规题
-第四天
+# XC
 
+**目标：45w（year）**
 
-# 面试题
+|         | 16        | 15        | 14        | 13       |
+| ------- | --------- | --------- | --------- | -------- |
+| Monthly | 27k ~ 28k | 29k ~ 30k | 31k ~ 32k | 33 ~ 34k |
+| pdd     | 30k       |           |           |          |
+| alibaba | 28k       |           |           |          |
+
+# RV
+
+### 自我介绍
+
+我叫甘志强，本科毕业安徽师范大学，专业是软件工程，是18年校招到途家网，做的是Java开发，后面转岗到携程国际研发部的搜索团队，入职后一直在维护trip.com的大搜，目前有两年多工作经验，一年多的搜索相关经验，期间也接触到部分nlp相关的知识。
+
 ### 自定义插件的相关问题
+
 1. 为什么要自定义开发es插件
 答：原因有以下几点
 - 产品希望能支持自定义的专业词库，现在用日语词库，都是我们自己整理的
@@ -24,7 +27,7 @@
 3. 在开发自定义有遇到问题吗？
    答：
 
-## es相关面试题
+## es相关题
 
 **es基础**
 
@@ -32,15 +35,26 @@
 
    答：https://cloud.tencent.com/developer/article/1184361
 
-2. 说一下es的分布式架构原理 / es是如何实现分布式的
+2. Elasticsearch如何做到亿级数据查询毫秒级返回？
+
+   答：主要从以下几方面优化
+
+   - 冷热数据分离，建两个索引分别存放冷热数据
+   - 提高节点filesystem cache大小，至少是每个数据节点的一半
+   - 数据预热，定时任务搜索热词，保证热数据始终在在FileSystem Cache，做到毫秒级缓存
+   - 不要做深分页，如果真的要做Scroll API，生成快照，不可跳页访问
+
+   详细参考：https://cloud.tencent.com/developer/article/1446107
+
+3. 说一下es的分布式架构原理 / es是如何实现分布式的
 
    答：https://mp.weixin.qq.com/s/3D6ikLDrPHpKsU6RSz012Q（第一点）
 
-3. 说一下es的写入数据流程以及底层原理
+4. 说一下es的写入数据流程以及底层原理
 
    答：https://mp.weixin.qq.com/s/h3AVAKpepGzbmKG5x-KNzg
 
-4. elasticsearch了解多少，说说你们公司 es 的集群架构，索引数据大小，分片有多少，以及一些调优手段 。
+5. elasticsearch了解多少，说说你们公司 es 的集群架构，索引数据大小，分片有多少，以及一些调优手段 。
 
    答：我们es采用双机房单集群部署，每个集群三台物理机，后期打算迁往k8s
 
@@ -68,9 +82,13 @@
 
      （2）写入前关闭 refresh_interval 设置为-1，禁用刷新机制；
 
+   - 查询优化
+
+     （1）禁用wildcard、prefix等查询
+
    还有一些调优方式，请参考：[ES官方调优指南翻译](http://wangnan.tech/post/elasticsearch-how-to/)
 
-5. es有几种node？每个node职责和作用是怎样的？
+6. es有几种node？每个node职责和作用是怎样的？
 
    答：es主要有4种节点类型，分别是master、data、coordinating（协作节点）、ingest，对应职责分别如下：
 
@@ -88,7 +106,7 @@
 
    
 
-6. elasticsearch的倒排索引是什么？
+7. elasticsearch的倒排索引是什么？
 
    答：倒排索引，是通过分词策略，形成了词和文章的映射关系表，这种词典+映射表即为倒排索引。有了倒排索引，就能实现 o（1）时间复杂度的效率检索文章了，极大的提高了检索效率。
 
@@ -102,13 +120,13 @@
 
    （2）查询速度快。O(len(str))的查询时间复杂度。
 
-7. Elasticsearch 是如何实现 Master 选举的？
+8. Elasticsearch 是如何实现 Master 选举的？
 
-   答：那我说一下初始启动场景下，es的master选举过程，假设有三个节点node1，node2，node3。node1启动的时候，执行findMaster()，node1发现只有自己一个node，不满足节点数大于n/2+1的条件（n是参数minimum_master_nodes配置），所以此时找不到master， node1会不断的执行while循环直到找到master位置。然后node2上线，node1和node2构成了两个节点，node2选举自己作为master节点, 此时node2通过ping可以发现node1, 所以两个master候选节点，满足配置条件，故node2就成为master。
+   答：那我说一下初始启动场景下，es的master选举过程，假设有三个节点node1，node2，node3。node1启动的时候，执行findMaster()，node1发现只有自己一个node，不满足节点数大于n/2+1的条件（n是参数minimum_master_nodes配置），没办法选举master，然后node1会不断的执行while循环直到找到master。接着node2上线，node1和node2构成了两个节点，当node2选举自己作为master节点时, 并且node2通过ping可以发现node1, 所以此时有两个master候选节点，满足配置条件，故node2就成为master。
 
    参考：[Elasticsearch的选举机制](https://www.jianshu.com/p/bba684897544)
 
-8. 详细描述一下es的搜索流程？
+9. 详细描述一下es的搜索流程？
 
    答：es搜索流程主要为“query-then-fetch”
 
@@ -117,7 +135,7 @@
    - query phase 每个shard将自己的搜索结果（本质上就是一些doc id），返回给 协调节点（coordinate node），由协调节点（coordinate node）进行数据的合并、排序、分页等，以生成最终结果
    - fetch phase 接着由协调节点（coordinate node），根据doc id去各节点中拉取实际的 `document`数据,最终返回给客户端
 
-9. 详细描述一下es的索引过程？
+10. 详细描述一下es的索引过程？
 
    - 客户写集群某节点写入数据，发送请求。（如果没有指定路由/协调节点，请求的节点扮演路由节点的角色。）
 
@@ -133,19 +151,23 @@
    1shard = hash(_routing) % (num_of_primary_shards)
    ```
 
-   10. 能在再详细索引时分片内部的过程吗？
+11. 能在再详细索引时分片内部的过程吗？
 
-       - 当分片所在的节点接收到来自协调节点的请求后，会将请求写入到 MemoryBuffer，然后定时（默认是每隔 1 秒）写入到 Filesystem Cache，这个从 MomeryBuffer 到 Filesystem Cache 的过程就叫做 refresh；
+    - 当分片所在的节点接收到来自协调节点的请求后，会将请求写入到 MemoryBuffer，然后定时（默认是每隔 1 秒）写入到 Filesystem Cache，这个从 MomeryBuffer 到 Filesystem Cache 的过程就叫做 refresh；
 
-       - 当然在某些情况下，存在 Momery Buffer 和 Filesystem Cache 的数据可能会丢失，ES 是通过 translog 的机制来保证数据的可靠性的。其实现机制是接收到请求后，同时也会写入到 translog 中 ，当 Filesystem cache 中的数据写入到磁盘中时，才会清除掉，这个过程叫做 flush；
+    - 当然在某些情况下，存在 Momery Buffer 和 Filesystem Cache 的数据可能会丢失，ES 是通过 translog 的机制来保证数据的可靠性的。其实现机制是接收到请求后，同时也会写入到 translog 中 ，当 Filesystem cache 中的数据写入到磁盘中时，才会清除掉，这个过程叫做 flush；
 
-       - 在 flush 过程中，内存中的缓冲将被清除，内容被写入一个新段，段的 fsync将创建一个新的提交点，并将内容刷新到磁盘，旧的 translog 将被删除并开始一个新的 translog。
+    - 在 flush 过程中，内存中的缓冲将被清除，内容被写入一个新段，段的 fsync将创建一个新的提交点，并将内容刷新到磁盘，旧的 translog 将被删除并开始一个新的 translog。
 
-       - flush 触发的时机是定时触发（默认 30 分钟）或者 translog 变得太大（默认为 512M）时；
+    - flush 触发的时机是定时触发（默认 30 分钟）或者 translog 变得太大（默认为 512M）时；
 
-       大致流程
+    大致流程
 
-       <img src="http://tc.ganzhiqiang.wang/es-shard1.png?imageMogr2/thumbnail/!70p" style="zoom:18%;" />
+    <img src="http://tc.ganzhiqiang.wang/es-shard1.png?imageMogr2/thumbnail/!70p" style="zoom:18%;" />
+
+12. BM25分是如何计算的？
+
+    
 
 **es查询语句相关**
 
@@ -161,7 +183,7 @@
 
 1. Double Array Trie树的公式是什么？
 
-   答：base[s] + c = t 且 check[t] = s，其中s为父节点位置，s为子节点位置
+   答：base[s] + c = t 且 check[t] = s，其中s为父节点位置，t为子节点位置
 
 ## 参考文档
 

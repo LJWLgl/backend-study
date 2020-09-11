@@ -1,0 +1,172 @@
+/*
+给定两个二叉树，编写一个函数来检验它们是否相同。
+
+如果两个树在结构上相同，并且节点具有相同的值，则认为它们是相同的。
+
+示例 1:
+
+输入:       1         1
+          / \       / \
+         2   3     2   3
+
+        [1,2,3],   [1,2,3]
+
+输出: true
+示例 2:
+
+输入:      1          1
+          /           \
+         2             2
+
+        [1,2],     [1,null,2]
+
+输出: false
+示例 3:
+
+输入:       1         1
+          / \       / \
+         2   1     1   2
+
+        [1,2,1],   [1,1,2]
+
+输出: false
+*/
+
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+
+class Solution {
+    public boolean isSameTree(TreeNode p, TreeNode q) {
+      if (p != null && q != null) {
+        if (p.val != q.val) {
+          return false;
+        } else {
+          return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+        }
+      } 
+      else if (p == null && q == null) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+}
+
+
+
+/*
+ * 给定字符串（合法字符只包括0，1，？），替换字符串中的通配符？为0或者1，生成所有可能的字符串。
+ * Input str = "1??0?101"
+ * Output: 
+ *       10000101
+ *       10001101
+ *       10100101
+ *       10101101
+ *       11000101
+ *       11001101
+ *       11100101
+ *       11101101
+ *
+ */
+
+/**
+1. n '?'  -> 2^n
+2. 000..0  -> 111..1
+3. index[n] = {1,2,4} 
+4. i = 0 - 2^n-1;   ->  二进制  
+*/
+
+/**
+递归
+f(input) {
+  input[i] = 0 f(input)
+  input[i] = 1 f(input)
+
+}
+*/
+class Solution {
+    public void printAllConditions(String input) {
+    
+      char[] valueArr = input.toCharArray();
+      
+      // 求可能的最小值
+      int minWhIndex = -1;
+      char[] minValueArr = new char[valueArr.length];
+      for (int i = valueArr.length() - 1; i >=0; i--) {
+        if (valueArr[i] == '?') {
+         minWhIndex = i;
+           minvalueArr[i] = valueArr[i];
+           break;
+        }
+      }
+      for (int i = minWhIndex + 1; i < minValueArr.length; i++) {
+        minValueArr[i] = '0';
+      }
+      int minVlaue = two2Ten(minValueArr);
+      
+      // 求可能的最大值
+      char[] maxValueArr = newArray(valueArr);
+      for (int i = 0; i < maxValueArr.length; i++) {
+        if (maxValueArr[i] == '?') {
+          maxValueArr[i] = '1';
+        }
+      }
+      int maxValue = two2Ten(maxValueArr);
+      
+      for (int i=minVlaue; i <=maxValue; i++) {
+       char[] tempArr = ten2Two(i);
+        if (checkStr(tempArr, valueArr)) {
+          System.out.println(String.valueOf(tempArr))
+        }
+      }
+    }
+
+   // 数组拷贝
+   private char[] newArray(char[] oldArr) {
+     char[] newArr = new char[oldArr.length];
+     for(int i=0; i < oldArr.length; i++) {
+       newArr[i] = oldArr[i];
+     }
+     return newArr;
+   }
+
+
+    // 二进制转十进制
+    private int two2Ten(char[] arr) {
+    }
+      
+    // 十进制转二进制
+   private char[] ten2Two(int value) {
+    }
+
+   private boolean checkStr(char[] arr1, char[] arr2) {
+      // char[] arr1 = twoStr.toCharArray();
+      // char[] arr2 = input.toCharArray();
+      for (int i = arr1.length - 1; i >= 0; i--) {
+        if (arr1[i] != arr2[i] && arr2[i] != '?') {
+          return false;
+      }
+      return true;
+    }
+}
+
+/*  
+给你两个有序整数数组 nums1 和 nums2，请你将 nums2 合并到 nums1 中，使 nums1 成为一个有序数组。
+说明:
+初始化 nums1 和 nums2 的元素数量分别为 m 和 n 。
+你可以假设 nums1 有足够的空间（空间大小大于或等于 m + n）来保存 nums2 中的元素。
+
+示例:
+输入:
+nums1 = [1,2,3,0,0,0], m = 3
+nums2 = [2,5,6],       n = 3
+输出: [1,2,2,3,5,6]
+*/
