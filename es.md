@@ -70,7 +70,7 @@
 ## ES查询
 ### 聚合查询
 - [Elasticsearch 聚合分析深入学习](https://zhuanlan.zhihu.com/p/107820698):star::star:
-- [ES系列八、正排索Doc Values和Field Data](https://www.cnblogs.com/wangzhuxing/p/9508784.html)
+- [ES系列八、正排索Doc Values和Field Data](https://www.cnblogs.com/wangzhuxing/p/9508784.html):star:
 ### ES分词器
 - [Tokenizer reference](https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis-tokenizers.html)
 - [ES分词器（翻译）](https://blog.csdn.net/jacksonary/article/details/83902325)

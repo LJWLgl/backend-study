@@ -55,11 +55,66 @@
 
 2. es有哪些常用的参数配置？
 
-   答：
+   答：es常用配置如下
+
+   **JVM**
+
+   - -Xms31g -Xmx31g
+
+     堆的最大最小内存一般是机器内存的一半，不要超过32G。如果使用`Doc Vlaue`，则jvm可以设置的更小（4G~32G），便于将`Doc Vlaue`缓存到内存。
+
+   - Lucene内存
+
+     剩下的一半给Lucene，用于缓存segements文件，加速文件检索
+
+   **Memory内存配置**
+
+   - :white_check_mark:bootstrap.memory_lock: 是否锁住内存，避免交换(swapped)带来的性能损失,默认值是: false:
+
+   - :white_check_mark:iindices.fielddata.cache.size（节点用于 fielddata 的最大内存）
+
+     如果 fielddata达到该阈值，就会把旧数据交换出去。该参数可以设置百分比或者绝对值。默认设置是不限制，所以强烈建议设置该值，比如 10%。
+
+   - white_check_mark:indices.breaker.fielddata.limit（ fielddata 断路器的触发值）
+     fielddata断路器默认设置堆的 60% 作为 fielddata 大小的上限。
+
+   - indices.breaker.request.limit
+     request 断路器估算需要完成其他请求部分的结构大小，例如创建一个聚合桶，默认限制是堆内存的 40%。
+
+   - indices.breaker.total.limit
+     total 揉合 request 和 fielddata 断路器保证两者组合起来不会使用超过堆内存的 70%。
+
+   **Index配置**
+
+   - :white_check_mark:index.number_of_shards（设置索引的分片数,默认为5）
+
+     number_of_shards是索引创建后一次生成的,后续不可更改设置
+
+   - index.number_of_replicas（设置索引的副本数,默认为1）
+
+   - index.refresh_interval（索引的刷新频率，默认1秒）
+
+     该值太小会造成索引频繁刷新，新的数据写入就慢了。（此参数的设置需要在写入性能和实时搜索中取平衡）
+
+   - cluster.routing.allocation.same_shard.host（防止同一个分片（shard）的主副本存在同一个物理机上）
+
+   **Discovery配置**
+
+   - :white_check_mark:idiscovery.zen.minimum_master_nodes（选举一个Master至少需要多少个节点）
+
+   参考：
+
+   - [堆内存:大小和交换](https://www.elastic.co/guide/cn/elasticsearch/guide/current/heap-sizing.html)
+
+   - [ 限制内存使用](https://www.elastic.co/guide/cn/elasticsearch/guide/current/_limiting_memory_usage.html)
+
+   - https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html
+
+   - [Elasticsearch 常用配置参数总结]()
 
 3. es如何实现聚合操作aggregation的？
 
-   答：
+   答：借助DocVlaue和FieldData实现桶和指标聚合操作
 
 4. Elasticsearch如何做到亿级数据查询毫秒级返回？
 
@@ -78,7 +133,26 @@
 
 6. 说一下es的写入数据流程以及底层原理
 
-   答：https://mp.weixin.qq.com/s/h3AVAKpepGzbmKG5x-KNzg
+   答： primary shard（主分片内部流程如下）
+
+   Primary请求的入口是PrimaryOperationTransportHandler的MessageReceived, 当接收到请求时，执行的逻辑如下
+
+   1. **判断操作类型** 遍历bulk请求中的各子请求，根据不同的操作类型跳转到不同的处理逻辑
+   2. 将update操作转换为Index和Delete操作 获取文档的当前内容，与update内容合并生成新文档，然后将update请求转换成index请求，此处文档设置一个version v1
+   3. **Parse Doc** 解析文档的各字段，并添加如_uid等ES相关的一些系统字段
+   4. **更新mapping** 对于新增字段会根据dynamic mapping或dynamic template生成对应的mapping，如果mapping中有dynamic mapping相关设置则按设置处理，如忽略或抛出异常
+   5. **获取sequence Id和Version** 从SequcenceNumberService获取一个sequenceID和Version。SequcenID用于初始化LocalCheckPoint， verion是根据当前Versoin+1用于防止并发写导致数据不一致。
+   6. **写入lucene** 这一步开始会对文档uid加锁，然后判断uid对应的version v2和之前update转换时的versoin v1是否一致，不一致则返回第二步重新执行。 如果version一致，如果同id的doc已经存在，则调用lucene的updateDocument接口，如果是新文档则调用lucene的addDoucument. 这里有个问题，如何保证Delete-Then-Add的原子性，ES是通过在Delete之前会加上已refresh锁，禁止被refresh，只有等待Add完成后释放了Refresh Lock, 这样就保证了这个操作的原子性。
+   7. **写入translog** 写入Lucene的Segment后，会以key value的形式写Translog， Key是Id, Value是Doc的内容。当查询的时候，如果请求的是GetDocById则可以直接根据_id从translog中获取。满足nosql场景的实时性。
+   8. **重构bulk request** 因为primary shard已经将update操作转换为index操作或delete操作，因此要对之前的bulkrequest进行调整，只包含index或delete操作，不需要再进行update的处理操作。
+   9. **flush translog** 默认情况下，translog要在此处落盘完成，如果对可靠性要求不高，可以设置translog异步，那么translog的fsync将会异步执行，但是落盘前的数据有丢失风险。
+   10. **发送请求给replicas** 将构造好的bulkrequest并发发送给各replicas，等待replica返回，这里需要等待所有的replicas返回，响应请求给协调节点。如果某个shard执行失败，则primary会给master发请求remove该shard。这里会同时把sequenceID， primaryTerm, GlobalCheckPoint等传递给replica。
+   11. **等待replica响应** 当所有的replica返回请求时，更细primary shard的LocalCheckPoint。
+
+   参考：
+
+   - [深入理解Elasticsearch写入过程](https://zhuanlan.zhihu.com/p/94915597)
+   - [动态更新索引](https://www.elastic.co/guide/cn/elasticsearch/guide/current/dynamic-indices.html)
 
 7. elasticsearch了解多少，说说你们公司 es 的集群架构，索引数据大小，分片有多少，以及一些调优手段 。
 
