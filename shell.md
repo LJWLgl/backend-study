@@ -21,6 +21,7 @@ echo "a;b" | sed 's/;/\
 /g'
 ```
 **行首行尾添加字符**
+
 ```bash
 # 在每行的头添加字符，比如"HEAD"，命令如下：
 sed 's/^/HEAD&/g' [file]
@@ -35,5 +36,24 @@ netstat -n | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
 SYN_RECV 2
 ESTABLISHED 4
 TIME_WAIT 1
+```
+
+## export
+
+shell翻墙
+```shell
+export http_proxy=http://127.0.0.1:1087;export https_proxy=http://127.0.0.1:1087;
+```
+
+
+
+## gh-md-toc
+
+自动生成markdown的目录，请参考[github-markdown-toc](https://github.com/ekalinin/github-markdown-toc)
+
+```shell
+# sed '3d' 删除前3行, sed '$d' 删除尾行，sed  's/*/-/g' 替换字符
+> gh-md-toc ~/myapps/project/backend-study/README.md | sed '3d' | sed '$d' | sed  's/*/-/g' > ~/temp/3.txt
+> open ~/temp/3.txt
 ```
 
