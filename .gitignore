@@ -7,3 +7,5 @@ configs/
 .markeditor/file_manager_status.config
 .sync/
 .DS_Store
+*.pdf
+*/*.pdf
