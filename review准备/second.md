@@ -33,9 +33,35 @@
 
 1. Lucene、solr以及elasticsearch之间的区别
 
-   答：https://cloud.tencent.com/developer/article/1184361
+   答：区别和联系主要如下：
 
-2. Elasticsearch如何做到亿级数据查询毫秒级返回？
+   首先他们的联系是：
+
+   - 两者都是基于lucene开发
+
+   区别：
+
+   - 分布式这块，solr/solrCloud借助zookpper实习，而Elasticsearch自己实现了分布式协调管理（组件xen）
+   - 全文搜索方面solr搜索是比es快的，但是es支持近实时搜索，而solr不支持
+   - 当实时建立索引时，Solr 会产生 io 阻塞，查询性能较差，Elasticsearch 具有明显的优势。随着数据量的增加，Solr 的搜索效率会变得更低，而 Elasticsearch 却没有明显的变化。
+   - 在聚合查询，比如distinct、group等，es表现更好；
+   - 在运维方面，es提供了多个api，非常便于维护；
+
+   参考：
+
+   - [为什么我们要选用 Elasticsearch 而不用 Solr](https://learnku.com/articles/43880)
+
+   - https://cloud.tencent.com/developer/article/1184361
+
+2. es有哪些常用的参数配置？
+
+   答：
+
+3. es如何实现聚合操作aggregation的？
+
+   答：
+
+4. Elasticsearch如何做到亿级数据查询毫秒级返回？
 
    答：主要从以下几方面优化
 
@@ -46,15 +72,15 @@
 
    详细参考：https://cloud.tencent.com/developer/article/1446107
 
-3. 说一下es的分布式架构原理 / es是如何实现分布式的
+5. 说一下es的分布式架构原理 / es是如何实现分布式的
 
    答：https://mp.weixin.qq.com/s/3D6ikLDrPHpKsU6RSz012Q（第一点）
 
-4. 说一下es的写入数据流程以及底层原理
+6. 说一下es的写入数据流程以及底层原理
 
    答：https://mp.weixin.qq.com/s/h3AVAKpepGzbmKG5x-KNzg
 
-5. elasticsearch了解多少，说说你们公司 es 的集群架构，索引数据大小，分片有多少，以及一些调优手段 。
+7. elasticsearch了解多少，说说你们公司 es 的集群架构，索引数据大小，分片有多少，以及一些调优手段 。
 
    答：我们es采用双机房单集群部署，每个集群三台物理机，后期打算迁往k8s
 
@@ -88,7 +114,7 @@
 
    还有一些调优方式，请参考：[ES官方调优指南翻译](http://wangnan.tech/post/elasticsearch-how-to/)
 
-6. es有几种node？每个node职责和作用是怎样的？
+8. es有几种node？每个node职责和作用是怎样的？
 
    答：es主要有4种节点类型，分别是master、data、coordinating（协作节点）、ingest，对应职责分别如下：
 
@@ -106,7 +132,7 @@
 
    
 
-7. elasticsearch的倒排索引是什么？
+9. elasticsearch的倒排索引是什么？
 
    答：倒排索引，是通过分词策略，形成了词和文章的映射关系表，这种词典+映射表即为倒排索引。有了倒排索引，就能实现 o（1）时间复杂度的效率检索文章了，极大的提高了检索效率。
 
@@ -120,38 +146,38 @@
 
    （2）查询速度快。O(len(str))的查询时间复杂度。
 
-8. Elasticsearch 是如何实现 Master 选举的？
+10. Elasticsearch 是如何实现 Master 选举的？
 
    答：那我说一下初始启动场景下，es的master选举过程，假设有三个节点node1，node2，node3。node1启动的时候，执行findMaster()，node1发现只有自己一个node，不满足节点数大于n/2+1的条件（n是参数minimum_master_nodes配置），没办法选举master，然后node1会不断的执行while循环直到找到master。接着node2上线，node1和node2构成了两个节点，当node2选举自己作为master节点时, 并且node2通过ping可以发现node1, 所以此时有两个master候选节点，满足配置条件，故node2就成为master。
 
    参考：[Elasticsearch的选举机制](https://www.jianshu.com/p/bba684897544)
 
-9. 详细描述一下es的搜索流程？
+11. 详细描述一下es的搜索流程？
 
-   答：es搜索流程主要为“query-then-fetch”
+    答：es搜索流程主要为“query-then-fetch”
 
-   - 客户端发送请求到一个协调节点（coordinate node）
-   - 协调节点将搜索请求转发到所有的shard对应的主分片（primary shard）或副分片（replica shard）
-   - query phase 每个shard将自己的搜索结果（本质上就是一些doc id），返回给 协调节点（coordinate node），由协调节点（coordinate node）进行数据的合并、排序、分页等，以生成最终结果
-   - fetch phase 接着由协调节点（coordinate node），根据doc id去各节点中拉取实际的 `document`数据,最终返回给客户端
+    - 客户端发送请求到一个协调节点（coordinate node）
+    - 协调节点将搜索请求转发到所有的shard对应的主分片（primary shard）或副分片（replica shard）
+    - query phase 每个shard将自己的搜索结果（本质上就是一些doc id），返回给 协调节点（coordinate node），由协调节点（coordinate node）进行数据的合并、排序、分页等，以生成最终结果
+    - fetch phase 接着由协调节点（coordinate node），根据doc id去各节点中拉取实际的 `document`数据,最终返回给客户端
 
-10. 详细描述一下es的索引过程？
+12. 详细描述一下es的索引过程？
 
-   - 客户写集群某节点写入数据，发送请求。（如果没有指定路由/协调节点，请求的节点扮演路由节点的角色。）
+    - 客户写集群某节点写入数据，发送请求。（如果没有指定路由/协调节点，请求的节点扮演路由节点的角色。）
 
-   - 节点 1 接受到请求后，使用文档_id 来确定文档属于分片 0。请求会被转到另外的节点，假定节点 3。因此分片 0 的主分片分配到节点 3 上。
+    - 节点 1 接受到请求后，使用文档_id 来确定文档属于分片 0。请求会被转到另外的节点，假定节点 3。因此分片 0 的主分片分配到节点 3 上。
 
-   - 节点 3 在主分片上执行写操作，如果成功，则将请求并行转发到节点 1和节点 2 的副本分片上，等待结果返回。所有的副本分片都报告成功，节点 3 将向协调节点（节点 1）报告成功，节点 1 向请求客户端报告写入成功。
+    - 节点 3 在主分片上执行写操作，如果成功，则将请求并行转发到节点 1和节点 2 的副本分片上，等待结果返回。所有的副本分片都报告成功，节点 3 将向协调节点（节点 1）报告成功，节点 1 向请求客户端报告写入成功。
 
-   如果面试官再问：第二步中的文档获取分片的过程？
+    如果面试官再问：第二步中的文档获取分片的过程？
 
-   回答：借助路由算法获取，路由算法就是根据路由和文档 id 计算目标的分片 id 的过程。
+    回答：借助路由算法获取，路由算法就是根据路由和文档 id 计算目标的分片 id 的过程。
 
-   ```java
-   1shard = hash(_routing) % (num_of_primary_shards)
-   ```
+    ```java
+    1shard = hash(_routing) % (num_of_primary_shards)
+    ```
 
-11. 能在再详细索引时分片内部的过程吗？
+13. 能在再详细索引时分片内部的过程吗？
 
     - 当分片所在的节点接收到来自协调节点的请求后，会将请求写入到 MemoryBuffer，然后定时（默认是每隔 1 秒）写入到 Filesystem Cache，这个从 MomeryBuffer 到 Filesystem Cache 的过程就叫做 refresh；
 
@@ -165,7 +191,7 @@
 
     <img src="http://tc.ganzhiqiang.wang/es-shard1.png?imageMogr2/thumbnail/!70p" style="zoom:18%;" />
 
-12. BM25分是如何计算的？
+14. BM25分是如何计算的？
 
     
 
