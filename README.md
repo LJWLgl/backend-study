@@ -70,6 +70,11 @@
 - [3 分钟理解完全二叉树、平衡二叉树、二叉查找树](https://juejin.im/entry/6844903606408183815)
 
 ### 红黑树
+
+- [漫画：什么是红黑树？](https://zhuanlan.zhihu.com/p/31805309)
+
+- [30张图带你彻底理解红黑树](https://www.jianshu.com/p/e136ec79235c)
+
 ### B、B+、B*树
 - [平衡二叉树、B树、B+树、B*树 理解其中一种你就都明白了](https://zhuanlan.zhihu.com/p/27700617)
 # 设计模式
@@ -171,6 +176,15 @@
 ## 分布式一致
 - 【推荐】[分布式](https://github.com/CyC2018/CS-Notes/blob/master/notes/%E5%88%86%E5%B8%83%E5%BC%8F.md)
 # 思想设计
+
+## 微服务设计
+
+- [微服务的4个设计原则和19个解决方案](https://www.cnblogs.com/stulzq/p/8573828.html)
+  微服务的4个设计原则：
+  - AKF拆分原则
+  - 前后端分离
+  - 无状态服务
+  - Restful通信风格
 
 ## 领域模型
 

@@ -34,7 +34,7 @@
 ### lucene底层结构
 - [Day 7 - Elasticsearch中数据是如何存储的](https://elasticsearch.cn/article/6178)
 - [lucene字典实现原理——FST](https://www.cnblogs.com/bonelee/p/6226185.html):star:
-- [[Lucene底层实现原理，它的索引结构](https://www.cnblogs.com/sessionbest/articles/8689030.html)]
+- [[Lucene底层实现原理，它的索引结构](https://www.cnblogs.com/sessionbest/articles/8689030.html)]:star:
 
 ### lucene优化
 - [Lucene底层原理和优化经验分享(2)-Lucene优化经验总结](https://blog.csdn.net/njpjsoftdev/article/details/54133548)
@@ -59,14 +59,13 @@
 - [ES官方调优指南翻译](http://wangnan.tech/post/elasticsearch-how-to/)
 
 ## 客户端
-
 ### High Level Client
-
 - [Elasitcsearch High Level Rest Client学习笔记（一）](https://my.oschina.net/muziH/blog/1845396)
 - [Elasitcsearch High Level Rest Client学习笔记（二） 基础API ](https://my.oschina.net/muziH/blog/1858134)
 - [Elasticsearch的路由（Routing）特性](https://my.oschina.net/muziH/blog/1845783)
 - [使用Java High Level REST Client操作elasticsearch](https://www.cnblogs.com/ginb/p/8716485.html)
-
+## ES索引
+- [深入理解Elasticsearch写入过程](https://zhuanlan.zhihu.com/p/94915597)
 ## ES查询
 ### 聚合查询
 - [Elasticsearch 聚合分析深入学习](https://zhuanlan.zhihu.com/p/107820698):star::star:

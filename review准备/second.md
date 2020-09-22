@@ -71,11 +71,11 @@
 
    - :white_check_mark:bootstrap.memory_lock: 是否锁住内存，避免交换(swapped)带来的性能损失,默认值是: false:
 
-   - :white_check_mark:iindices.fielddata.cache.size（节点用于 fielddata 的最大内存）
+   - :white_check_mark:indices.fielddata.cache.size（节点用于 fielddata 的最大内存）
 
      如果 fielddata达到该阈值，就会把旧数据交换出去。该参数可以设置百分比或者绝对值。默认设置是不限制，所以强烈建议设置该值，比如 10%。
 
-   - white_check_mark:indices.breaker.fielddata.limit（ fielddata 断路器的触发值）
+   - :white_check_mark:indices.breaker.fielddata.limit（ fielddata 断路器的触发值）
      fielddata断路器默认设置堆的 60% 作为 fielddata 大小的上限。
 
    - indices.breaker.request.limit
@@ -100,7 +100,7 @@
 
    **Discovery配置**
 
-   - :white_check_mark:idiscovery.zen.minimum_master_nodes（选举一个Master至少需要多少个节点）
+   - :white_check_mark:discovery.zen.minimum_master_nodes（选举一个Master至少需要多少个节点）
 
    参考：
 
@@ -121,7 +121,7 @@
    答：主要从以下几方面优化
 
    - 冷热数据分离，建两个索引分别存放冷热数据
-   - 提高节点filesystem cache大小，至少是每个数据节点的一半
+   - 提高节点filesystem cache大小，至少是每个数据节点的一半（比如64G内存的机器，es的jvm内存分配31G，其余的给filesystem cache即lucene）
    - 数据预热，定时任务搜索热词，保证热数据始终在在FileSystem Cache，做到毫秒级缓存
    - 不要做深分页，如果真的要做Scroll API，生成快照，不可跳页访问
 
@@ -181,6 +181,8 @@
      （1）写入前副本数设置为0；
 
      （2）写入前关闭 refresh_interval 设置为-1，禁用刷新机制；
+
+     （3）filesystem cache
 
    - 查询优化
 
