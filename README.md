@@ -1,4 +1,5 @@
 **随着Java学习的不断深入，发现很多知识在脑海里都是一个个碎片，建此仓库的目的希望把零碎的知识点都整合起来，提高自己的学习效率。欢迎志同道合的朋友，一起来维护该仓库**
+
 # 目录
 
 - [网络基础](#网络基础)
@@ -92,25 +93,34 @@
 - [HashMap? ConcurrentHashMap? 相信看完这篇没人能难住你！](https://crossoverjie.top/2018/07/23/java-senior/ConcurrentHashMap/)
 - [Java7/8 中的 HashMap 和 ConcurrentHashMap 全解析](https://javadoop.com/post/hashmap)
 ## 并发
+### 概述
+- :star::star:[RedSpider1-concurrent](https://github.com/RedSpider1/concurrent)
+- :star::star:[《Java并发》](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%B9%B6%E5%8F%91.md)
+### 线程池
+- :star:[你都理解创建线程池的参数吗？](http://objcoding.com/2019/04/11/threadpool-initial-parameters/)
+### AQS
 
-- 【推荐】[《Java并发》](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E5%B9%B6%E5%8F%91.md)
+- :star:[从ReentrantLock的实现看AQS的原理及应用](https://tech.meituan.com/2019/12/05/aqs-theory-and-apply.html)
+
+### 锁
 - [Java中的锁分类](https://www.cnblogs.com/qifengshi/p/6831055.html)
-- [ListenalbeFuture的使用总结](https://juejin.im/post/5cb48bcd6fb9a0687015c9c7)
-### Synchronized
+- ListenalbeFuture的使用总结](https://juejin.im/post/5cb48bcd6fb9a0687015c9c7)
+#### Synchronized
 
 - [Java经典面试题，你用过synchronized吗？它的底层原理是什么？](https://juejin.im/entry/6844904047430860813)
-
 - [深入分析Synchronized原理(阿里面试题)](https://www.cnblogs.com/aspirant/p/11470858.html)
-
+#### ReentrantLock
 ### J.U.C组件
 - [Java进阶（七）正确理解Thread Local的原理与适用场景](http://www.jasongj.com/java/threadlocal/)
-## 虚拟机
+## JVM
 
-- 【推荐】[Java虚拟机](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA.md)
+### 概述
+- :star::star:[Java虚拟机](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20%E8%99%9A%E6%8B%9F%E6%9C%BA.md)
+
+### 垃圾回收器
+
 ### JVM调优
-
 - [jvm优化必知系列——监控工具](https://juejin.im/post/6844903504402726920)
-
   
 ## JDK1.8+
 - Lamda表达式与Stream流 [《Java Functional Programming Internals》](https://github.com/CarpenterLee/JavaLambdaInternals)
@@ -122,7 +132,7 @@
 - [Spring常用接口和类](https://blog.csdn.net/qq_35830949/article/details/79603622)
 - [SpringMVC执行流程及工作原理](https://www.jianshu.com/p/8a20c547e245)
 - 【专栏】[JavaEE企业级分布式架构核心技术](https://zhuanlan.zhihu.com/p/41274946)
-- 【推荐】[Spring IoC容器初的初始化过程](https://my.oschina.net/mindfind/blog/918515)
+- :star::star:[Spring IoC容器初的初始化过程](https://my.oschina.net/mindfind/blog/918515)
 - [spring是如何解决循环依赖的？](https://juejin.im/post/5c98a7b4f265da60ee12e9b2)
 ## Spring Boot
 - [Spring Boot 1.x基础教程](http://blog.didispace.com/spring-boot-learning-1x/)
@@ -144,19 +154,37 @@
 - [Kafka技术原理](https://cshihong.github.io/2018/06/02/Kafka%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/)
 ### QMQ
 去哪儿和携程内部使用的消息队列
-- 【推荐】[《去哪儿网消息队列设计与实现》](https://www.infoq.cn/article/b4VPvP3m8DA-PM7ZqMGZ?from=timeline&isappinstalled=0)
+- :star::star:[《去哪儿网消息队列设计与实现》](https://www.infoq.cn/article/b4VPvP3m8DA-PM7ZqMGZ?from=timeline&isappinstalled=0)
 # 数据库
 ## Mysql
 
+### 概述
+
 - [Mysql](https://github.com/CyC2018/CS-Notes/blob/master/notes/MySQL.md)
-- [事务的ACID和四个隔离级别](https://www.jianshu.com/p/b1fbf903f5a0)
-- [MySQL/InnoDB中，乐观锁、悲观锁、共享锁、排它锁、行锁、表锁、死锁概念的理解](https://www.souyunku.com/2018/07/30/mysql/)
-- [Mysql主从同步的原理](https://segmentfault.com/a/1190000008663001)
+
+### 索引
+
 - [Mysql B+树学习](https://juejin.im/post/59bf5cf65188252f92381fe5)
 - [为什么MySQL数据库索引选择使用B+树？](https://blog.csdn.net/xlgen157387/article/details/79450295)
+
+### 锁和事务
+
+- [事务的ACID和四个隔离级别](https://www.jianshu.com/p/b1fbf903f5a0)
+- :star:[MySQL innodb中各种SQL语句加锁分析](https://www.cnblogs.com/DataArt/p/10168106.html)
+
+- [MySQL/InnoDB中，乐观锁、悲观锁、共享锁、排它锁、行锁、表锁、死锁概念的理解](https://www.souyunku.com/2018/07/30/mysql/)
+
 - [MySQL 表锁和行锁机制](https://juejin.im/entry/5a55c7976fb9a01cba42786f)
+### 主从同步
+
+- [Mysql主从同步的原理](https://segmentfault.com/a/1190000008663001)
+
+### 查询优化
+
 - [常见mysql的慢查询优化方式](https://cloud.tencent.com/developer/article/1545163)
+
 ## Redis
+
 - [Redis](https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md#%E5%85%AD%E9%94%AE%E7%9A%84%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4)
 - [https://mrdear.cn/2018/08/19/middleware/redis--study_guide/](https://mrdear.cn/2018/08/19/middleware/redis--study_guide/)
 - [Redis设计与实现](https://redisbook.readthedocs.io/en/latest/index.html)
@@ -174,7 +202,7 @@
 ## 稳定性 & 高可用
 ## 服务治理
 ## 分布式一致
-- 【推荐】[分布式](https://github.com/CyC2018/CS-Notes/blob/master/notes/%E5%88%86%E5%B8%83%E5%BC%8F.md)
+- :star::star:[分布式](https://github.com/CyC2018/CS-Notes/blob/master/notes/%E5%88%86%E5%B8%83%E5%BC%8F.md)
 # 思想设计
 
 ## 微服务设计
@@ -195,7 +223,7 @@
 ## Http Client
 - [[踩坑总结] HttpClient默认重试策略不处理SocketTimeoutException](https://juejin.im/entry/5ad0b1116fb9a028c14ae238)
 # Review
-- 【推荐】[《写在19年初的后端社招面试经历(两年经验): 蚂蚁 头条 PingCAP》](https://juejin.im/entry/5c5122fce51d4506093462f6)
+- :star::star:[《写在19年初的后端社招面试经历(两年经验): 蚂蚁 头条 PingCAP》](https://juejin.im/entry/5c5122fce51d4506093462f6)
 - [《Java面试通关要点汇总集》](https://juejin.im/post/5a94a8ca6fb9a0635c049e67)
 - [《Java Web架构知识整理——记一次阿里面试经历》](https://juejin.im/post/5a45ff4b6fb9a0451b04e052)
 - [《蚂蚁金服面试题及答案之一面（持续更新）》](https://juejin.im/entry/5c8a08b56fb9a049bb7d354d)
@@ -215,7 +243,7 @@
 # 资料整理
 
 * [architecture.of.internet-product 互联网公司技术架构，微信/淘宝/微博/腾讯/阿里/美团点评/百度/Google/Facebook/Amazon/eBay的架构](https://github.com/davideuler/architecture.of.internet-product)
-* 【推荐】[📚 CyC Computer Science Learning Notes (技术面试需要掌握的基础知识整理)](https://github.com/CyC2018/CS-Notes)
+* :star::star:📚 CyC Computer Science Learning Notes (技术面试需要掌握的基础知识整理)](https://github.com/CyC2018/CS-Notes)
 * [😮 advanced-java 互联网 Java 工程师进阶知识完全扫盲](https://github.com/doocs/advanced-java)
 * [technology-talk 汇总java生态圈常用技术框架、开源中间件，系统架构、项目管理、经典架构案例、数据库、常用三方库、线上运维等知识](https://github.com/aalansehaiyang/technology-talk)
 * [architect-awesome 《后端架构师技术图谱》](https://github.com/xingshaocheng/architect-awesome)
