@@ -17,9 +17,16 @@
    - [集合](#集合)
       - [HashMap](#hashmap)
    - [并发](#并发)
-      - [Synchronized](#synchronized)
+      - [概述](#概述)
+      - [线程池](#线程池)
+      - [AQS](#aqs)
+      - [锁](#锁)
+         - [Synchronized](#synchronized)
+         - [ReentrantLock](#reentrantlock)
       - [J.U.C组件](#juc组件)
-   - [虚拟机](#虚拟机)
+   - [JVM](#jvm)
+      - [概述](#概述-1)
+      - [垃圾回收器](#垃圾回收器)
       - [JVM调优](#jvm调优)
    - [JDK1.8 ](#jdk18)
    - [JDK发展](#jdk发展)
@@ -36,6 +43,11 @@
       - [QMQ](#qmq)
 - [数据库](#数据库)
    - [Mysql](#mysql)
+      - [概述](#概述-2)
+      - [索引](#索引)
+      - [锁和事务](#锁和事务)
+      - [主从同步](#主从同步)
+      - [查询优化](#查询优化)
    - [Redis](#redis)
    - [HBase](#hbase)
 - [分布式设计](#分布式设计)
@@ -45,6 +57,7 @@
    - [服务治理](#服务治理)
    - [分布式一致](#分布式一致)
 - [思想设计](#思想设计)
+   - [微服务设计](#微服务设计)
    - [领域模型](#领域模型)
 - [错误排查](#错误排查)
    - [Http Client](#http-client)
@@ -57,6 +70,7 @@
    - [中间件相关](#中间件相关)
 - [个人成长](#个人成长)
 - [资料整理](#资料整理)
+
 
 # 网络基础
 
@@ -133,15 +147,32 @@
 - [SpringMVC执行流程及工作原理](https://www.jianshu.com/p/8a20c547e245)
 - 【专栏】[JavaEE企业级分布式架构核心技术](https://zhuanlan.zhihu.com/p/41274946)
 - :star::star:[Spring IoC容器初的初始化过程](https://my.oschina.net/mindfind/blog/918515)
+
+### Spring事务
+
+- [Spring 事务管理详解](http://www.mydlq.club/article/91/)
+
+### IOC
+
+- [《Spring IOC 容器源码分析》](https://javadoop.com/post/spring-ioc)
+
+### AOP
+
+- [《Spring AOP 使用介绍，从前世到今生》](https://javadoop.com/post/spring-aop-intro)
+
+### 常见问题
+
 - [spring是如何解决循环依赖的？](https://juejin.im/post/5c98a7b4f265da60ee12e9b2)
+- [惊人！Spring5 AOP 默认使用Cglib ？从现象到源码深度分析](https://juejin.im/post/6844903982721138696)
+  1. Spring 5.x 中 AOP 默认依旧使用 JDK 动态代理。
+  2. SpringBoot 2.x 开始，为了解决使用 JDK 动态代理可能导致的类型转化异常而默认使用 CGLIB。
+  3. 在 SpringBoot 2.x 中，如果需要默认使用 JDK 动态代理可以通过配置项`spring.aop.proxy-target-class=false`来进行修改，`proxyTargetClass`配置已无效。
+
 ## Spring Boot
+
 - [Spring Boot 1.x基础教程](http://blog.didispace.com/spring-boot-learning-1x/)
 - [Spring Boot 2.x基础教程](http://blog.didispace.com/spring-boot-learning-2x/)
-### IOC
-- [《Spring IOC 容器源码分析》](https://javadoop.com/post/spring-ioc)
-### AOP
-- [《Spring AOP 使用介绍，从前世到今生》](https://javadoop.com/post/spring-aop-intro)
-- [《Spring AOP 源码解析》](https://javadoop.com/post/spring-aop-source)
+- https://javadoop.com/post/spring-aop-source)
 ## MyBatis
 # 中间件
 ## ElasticSearch

@@ -29,7 +29,7 @@
 
 ## es相关题
 
-**es基础**
+### es基础
 
 1. Lucene、solr以及elasticsearch之间的区别
 
@@ -41,7 +41,7 @@
 
    区别：
 
-   - 分布式这块，solr/solrCloud借助zookpper实习，而Elasticsearch自己实现了分布式协调管理（组件xen）
+   - 分布式这块，solr/solrCloud借助zookpper实现，而Elasticsearch自己实现了分布式协调管理（组件xen）
    - 全文搜索方面solr搜索是比es快的，但是es支持近实时搜索，而solr不支持
    - 当实时建立索引时，Solr 会产生 io 阻塞，查询性能较差，Elasticsearch 具有明显的优势。随着数据量的增加，Solr 的搜索效率会变得更低，而 Elasticsearch 却没有明显的变化。
    - 在聚合查询，比如distinct、group等，es表现更好；
@@ -55,7 +55,7 @@
 
 2. es有哪些常用的参数配置？
 
-   答：es常用配置如下
+   答：es常用配置如下，配置文件为%ES_HOME%/config/elasticsearch.yml
 
    **JVM**
 
@@ -100,7 +100,7 @@
 
    **Discovery配置**
 
-   - :white_check_mark:discovery.zen.minimum_master_nodes（选举一个Master至少需要多少个节点）
+   - :white_check_mark:discovery.zen.minimum_master_nodes（选举一个Master至少需要多少个节点，一般设置成N/2 + 1）
 
    参考：
 
@@ -116,6 +116,10 @@
 
    答：借助DocVlaue和FieldData实现桶和指标聚合操作
 
+   具体查询请参考：
+
+   - [elasticsearch系列六：聚合分析（聚合分析简介、指标聚合、桶聚合）](https://www.cnblogs.com/leeSmall/p/9215909.html)
+
 4. Elasticsearch如何做到亿级数据查询毫秒级返回？
 
    答：主要从以下几方面优化
@@ -127,13 +131,19 @@
 
    详细参考：https://cloud.tencent.com/developer/article/1446107
 
-5. 说一下es的分布式架构原理 / es是如何实现分布式的
+5. es如何实现深度翻页？
 
-   答：https://mp.weixin.qq.com/s/3D6ikLDrPHpKsU6RSz012Q（第一点）
+   - [ElasticSearch如何支持深度分页](http://arganzheng.life/deep-pagination-in-elasticsearch.html)
 
-6. 说一下es的写入数据流程以及底层原理
+6. 说一下es的分布式架构原理 / es是如何实现分布式的
 
-   答： primary shard（主分片内部流程如下）
+   答：es分布式的核心在于在多个机器上启动多个es实例，组成es集群。一个index（索引）会包含多个分片，每个分片都是一个最小工作单元，每个分片存储部分数据，每个主分片又有主分片和副分片，主分片接收读写请求，而副分片只接收读请求，承担读负载。
+
+   参考：https://mp.weixin.qq.com/s/3D6ikLDrPHpKsU6RSz012Q（第一点）
+
+7. 说一下es的写入数据流程以及底层原理
+
+   答： primary shard（主分片内部流程如下） 
 
    Primary请求的入口是PrimaryOperationTransportHandler的MessageReceived, 当接收到请求时，执行的逻辑如下
 
@@ -154,11 +164,11 @@
    - [深入理解Elasticsearch写入过程](https://zhuanlan.zhihu.com/p/94915597)
    - [动态更新索引](https://www.elastic.co/guide/cn/elasticsearch/guide/current/dynamic-indices.html)
 
-7. elasticsearch了解多少，说说你们公司 es 的集群架构，索引数据大小，分片有多少，以及一些调优手段 。
+8. elasticsearch了解多少，说说你们公司 es 的集群架构，索引数据大小，分片有多少，以及一些调优手段 。
 
    答：我们es采用双机房单集群部署，每个集群三台物理机，后期打算迁往k8s
 
-   目前es部署情况：3个master节点，6个data节点，30+索引，每个索引6分片1副本，目前最大索引是酒店的有500G，600w条数据
+   目前es部署情况：3个master节点，6个data节点，30+索引，每个索引6分片1副本，目前最大索引是酒店的有400G，600w条数据
 
    调优手段：
 
@@ -190,7 +200,7 @@
 
    还有一些调优方式，请参考：[ES官方调优指南翻译](http://wangnan.tech/post/elasticsearch-how-to/)
 
-8. es有几种node？每个node职责和作用是怎样的？
+9. es有几种node？每个node职责和作用是怎样的？
 
    答：es主要有4种节点类型，分别是master、data、coordinating（协作节点）、ingest，对应职责分别如下：
 
@@ -208,7 +218,7 @@
 
    
 
-9. elasticsearch的倒排索引是什么？
+10. elasticsearch的倒排索引是什么？
 
    答：倒排索引，是通过分词策略，形成了词和文章的映射关系表，这种词典+映射表即为倒排索引。有了倒排索引，就能实现 o（1）时间复杂度的效率检索文章了，极大的提高了检索效率。
 
@@ -222,7 +232,7 @@
 
    （2）查询速度快。O(len(str))的查询时间复杂度。
 
-10. Elasticsearch 是如何实现 Master 选举的？
+11. Elasticsearch 是如何实现 Master 选举的？
 
    答：那我说一下初始启动场景下，es的master选举过程，假设有三个节点node1，node2，node3。node1启动的时候，执行findMaster()，node1发现只有自己一个node，不满足节点数大于n/2+1的条件（n是参数minimum_master_nodes配置），没办法选举master，然后node1会不断的执行while循环直到找到master。接着node2上线，node1和node2构成了两个节点，当node2选举自己作为master节点时, 并且node2通过ping可以发现node1, 所以此时有两个master候选节点，满足配置条件，故node2就成为master。
 
@@ -259,7 +269,7 @@
 
     - 当然在某些情况下，存在 Momery Buffer 和 Filesystem Cache 的数据可能会丢失，ES 是通过 translog 的机制来保证数据的可靠性的。其实现机制是接收到请求后，同时也会写入到 translog 中 ，当 Filesystem cache 中的数据写入到磁盘中时，才会清除掉，这个过程叫做 flush；
 
-    - 在 flush 过程中，内存中的缓冲将被清除，内容被写入一个新段，段的 fsync将创建一个新的提交点，并将内容刷新到磁盘，旧的 translog 将被删除并开始一个新的 translog。
+    - 在 flush 过程中，内存中的缓冲将被清除，内容被写入一个新段（segment，存储在磁盘中），段的 fsync将创建一个新的提交点，并将内容刷新到磁盘，旧的 translog 将被删除并开始一个新的 translog。
 
     - flush 触发的时机是定时触发（默认 30 分钟）或者 translog 变得太大（默认为 512M）时；
 
@@ -267,11 +277,11 @@
 
     <img src="http://tc.ganzhiqiang.wang/es-shard1.png?imageMogr2/thumbnail/!70p" style="zoom:18%;" />
 
-14. BM25分是如何计算的？
+14. BM25分是如何计算的
 
-    
+    参考：[笔记十九：搜索的相关性算分](https://learnku.com/articles/36132)
 
-**es查询语句相关**
+### es查询语句相关
 
 1. es常用的查询语句有哪些
 
@@ -280,6 +290,16 @@
 2. 你们前缀查询为什么用edge_ngram，不用prefix查询？
 
    答：主要是因为prefix查询的性能比较差，需要遍历索引。它类似一个过滤器，不会计算相关性得分，当数据量较小时可以使用。
+   
+3. Multi Match多字段查询?
+
+   查询由以下type：
+
+   - best_fields  　（默认）查找与任何字段匹配的文档，但使用最佳字段中的_score。看[best_fields](https://www.elastic.co/guide/en/elasticsearch/reference/5.0/query-dsl-multi-match-query.html#type-best-fields)._
+   - most_fields　　查找与任何字段匹配的文档，并联合每个字段的_score.
+   - cross_fields　　采用相同分析器处理字段，就好像他们是一个大的字段。在每个字段中查找每个单词。看[cross_fields](https://www.elastic.co/guide/en/elasticsearch/reference/5.0/query-dsl-multi-match-query.html#type-cross-fields)。
+
+   参考：[Multi Match Query](Multi Match Query)
 
 ## 算法面试题
 
