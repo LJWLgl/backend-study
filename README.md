@@ -2,74 +2,81 @@
 
 # 目录
 
-- [网络基础](#网络基础)
-   - [TCP协议](#tcp协议)
-   - [HTTP/HTTPS](#httphttps)
-- [数据结构](#数据结构)
-   - [树](#树)
-      - [二叉树](#二叉树)
-      - [红黑树](#红黑树)
-      - [B、B 、B-树](#bbb树)
-- [设计模式](#设计模式)
-      - [行为型模式](#行为型模式)
-- [Java基础](#java基础)
-   - [语法](#语法)
-   - [集合](#集合)
-      - [HashMap](#hashmap)
-   - [并发](#并发)
-      - [概述](#概述)
-      - [线程池](#线程池)
-      - [AQS](#aqs)
-      - [锁](#锁)
-         - [Synchronized](#synchronized)
-         - [ReentrantLock](#reentrantlock)
-      - [J.U.C组件](#juc组件)
-   - [JVM](#jvm)
-      - [概述](#概述-1)
-      - [垃圾回收器](#垃圾回收器)
-      - [JVM调优](#jvm调优)
-   - [JDK1.8 ](#jdk18)
-   - [JDK发展](#jdk发展)
-- [框架](#框架)
-   - [Spring](#spring)
-   - [Spring Boot](#spring-boot)
-      - [IOC](#ioc)
-      - [AOP](#aop)
-   - [MyBatis](#mybatis)
-- [中间件](#中间件)
-   - [ElasticSearch](#elasticsearch)
-   - [消息队列](#消息队列)
-      - [Kafka](#kafka)
-      - [QMQ](#qmq)
-- [数据库](#数据库)
-   - [Mysql](#mysql)
-      - [概述](#概述-2)
-      - [索引](#索引)
-      - [锁和事务](#锁和事务)
-      - [主从同步](#主从同步)
-      - [查询优化](#查询优化)
-   - [Redis](#redis)
-   - [HBase](#hbase)
-- [分布式设计](#分布式设计)
-   - [分布式锁](#分布式锁)
-   - [分布式限流](#分布式限流)
-   - [稳定性 &amp; 高可用](#稳定性--高可用)
-   - [服务治理](#服务治理)
-   - [分布式一致](#分布式一致)
-- [思想设计](#思想设计)
-   - [微服务设计](#微服务设计)
-   - [领域模型](#领域模型)
-- [错误排查](#错误排查)
-   - [Http Client](#http-client)
-- [Review](#review)
-- [推荐书籍](#推荐书籍)
-   - [Java](#java)
-   - [Spring](#spring-1)
-      - [Spring Boot](#spring-boot-1)
-   - [代码风格](#代码风格)
-   - [中间件相关](#中间件相关)
-- [个人成长](#个人成长)
-- [资料整理](#资料整理)
+- [目录](#目录)
+   - [网络基础](#网络基础)
+      - [TCP协议](#tcp协议)
+      - [HTTP/HTTPS](#httphttps)
+   - [数据结构](#数据结构)
+      - [树](#树)
+         - [二叉树](#二叉树)
+         - [红黑树](#红黑树)
+         - [B、B 、B-树](#bbb树)
+   - [设计模式](#设计模式)
+         - [行为型模式](#行为型模式)
+   - [Java基础](#java基础)
+      - [语法](#语法)
+      - [集合](#集合)
+         - [HashMap](#hashmap)
+      - [并发](#并发)
+         - [概述](#概述)
+         - [线程池](#线程池)
+         - [AQS](#aqs)
+         - [锁](#锁)
+            - [Synchronized](#synchronized)
+            - [ReentrantLock](#reentrantlock)
+         - [J.U.C组件](#juc组件)
+      - [JVM](#jvm)
+         - [概述](#概述-1)
+         - [垃圾回收器](#垃圾回收器)
+         - [JVM调优](#jvm调优)
+      - [JDK1.8 ](#jdk18)
+      - [JDK发展](#jdk发展)
+   - [框架](#框架)
+      - [Spring](#spring)
+         - [IOC](#ioc)
+         - [AOP](#aop)
+         - [动态代理](#动态代理)
+         - [Spring MVC](#spring-mvc)
+         - [Spring事务](#spring事务)
+         - [常见问题](#常见问题)
+      - [Spring Boot](#spring-boot)
+      - [MyBatis](#mybatis)
+   - [中间件](#中间件)
+      - [ElasticSearch](#elasticsearch)
+      - [RPC框架](#rpc框架)
+         - [Dubbo](#dubbo)
+      - [消息队列](#消息队列)
+         - [Kafka](#kafka)
+         - [QMQ](#qmq)
+   - [数据库](#数据库)
+      - [Mysql](#mysql)
+         - [概述](#概述-2)
+         - [索引](#索引)
+         - [锁和事务](#锁和事务)
+         - [主从同步](#主从同步)
+         - [查询优化](#查询优化)
+      - [Redis](#redis)
+      - [HBase](#hbase)
+   - [分布式设计](#分布式设计)
+      - [分布式锁](#分布式锁)
+      - [分布式限流](#分布式限流)
+      - [稳定性 &amp; 高可用](#稳定性--高可用)
+      - [服务治理](#服务治理)
+      - [分布式一致](#分布式一致)
+   - [思想设计](#思想设计)
+      - [微服务设计](#微服务设计)
+      - [领域模型](#领域模型)
+   - [错误排查](#错误排查)
+      - [Http Client](#http-client)
+   - [Review](#review)
+   - [推荐书籍](#推荐书籍)
+      - [Java](#java)
+      - [Spring](#spring-1)
+         - [Spring Boot](#spring-boot-1)
+      - [代码风格](#代码风格)
+      - [中间件相关](#中间件相关)
+   - [个人成长](#个人成长)
+   - [资料整理](#资料整理)
 
 
 # 网络基础
@@ -126,6 +133,13 @@
 #### ReentrantLock
 ### J.U.C组件
 - [Java进阶（七）正确理解Thread Local的原理与适用场景](http://www.jasongj.com/java/threadlocal/)
+
+## IO
+
+### NIO
+
+- [Java IO](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20IO.md)
+
 ## JVM
 
 ### 概述
@@ -144,22 +158,26 @@
 ## Spring
 - [Spring Bean 生命周期](https://juejin.im/post/5ab1bf19f265da23771947f1)
 - [Spring常用接口和类](https://blog.csdn.net/qq_35830949/article/details/79603622)
-- [SpringMVC执行流程及工作原理](https://www.jianshu.com/p/8a20c547e245)
-- 【专栏】[JavaEE企业级分布式架构核心技术](https://zhuanlan.zhihu.com/p/41274946)
+
+### IOC
 - :star::star:[Spring IoC容器初的初始化过程](https://my.oschina.net/mindfind/blog/918515)
+- [《Spring IOC 容器源码分析》](https://javadoop.com/post/spring-ioc)
+- 【专栏】[JavaEE企业级分布式架构核心技术](https://zhuanlan.zhihu.com/p/41274946)
+- 
+### AOP
+- [《Spring AOP 使用介绍，从前世到今生》](https://javadoop.com/post/spring-aop-intro)
+### 动态代理
+
+- [设计模式——代理模式的思考（Spring 部分）](https://blog.ganzhiqiang.wang/2019/02/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E2%80%94%E2%80%94%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E6%80%9D%E8%80%83/#more)
+- [Spring AOP中JDK和CGLib动态代理哪个更快？](https://juejin.im/entry/6844903673676431374)
+
+### Spring MVC
+
+- [SpringMVC执行流程及工作原理](https://www.jianshu.com/p/8a20c547e245)
 
 ### Spring事务
 
 - [Spring 事务管理详解](http://www.mydlq.club/article/91/)
-
-### IOC
-
-- [《Spring IOC 容器源码分析》](https://javadoop.com/post/spring-ioc)
-
-### AOP
-
-- [《Spring AOP 使用介绍，从前世到今生》](https://javadoop.com/post/spring-aop-intro)
-
 ### 常见问题
 
 - [spring是如何解决循环依赖的？](https://juejin.im/post/5c98a7b4f265da60ee12e9b2)
@@ -176,10 +194,15 @@
 ## MyBatis
 # 中间件
 ## ElasticSearch
-- [《Elasticsearch: 权威指南》](https://www.elastic.co/guide/cn/elasticsearch/guide/current/index.html)
-- [《ElasticSearch的使用》](https://juejin.im/post/5ab3aa9d51882577b45eee8d)
-- [《ES Java客户端对比》](http://www.gaowm.com/2018/02/06/Elasticsearch-%E4%BA%94-java%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%BB%8B%E7%BB%8D/)
+参考[es.md](https://github.com/LJWLgl/backend-study/blob/master/es.md)
+
+## RPC框架
+### Dubbo
+- :star:[DUBBO原理、应用与面经总结](https://www.jianshu.com/p/292fcdcfe41e)
+- [Dubbo面试题（2020最新版）](https://cloud.tencent.com/developer/article/1612348)
+
 ## 消息队列
+
 ### Kafka
 - [Kafka设计解析](http://www.jasongj.com/2015/03/10/KafkaColumn1/)
 - [Kafka技术原理](https://cshihong.github.io/2018/06/02/Kafka%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/)
@@ -230,7 +253,29 @@
 ## 分布式锁
 - [基于redis的分布式锁实现](https://juejin.im/entry/5a502ac2518825732b19a595)
 ## 分布式限流
+
+- [微服务-高并发下接口如何做到优雅的限流](https://blog.csdn.net/qq_44868502/article/details/104998125)
+
+  限流算法：
+
+  - **计数器限流**：
+
+    **原理**：计数器限流的本质是单位时间内，访问量到达设置的限制后，在这个时间段没有过去之前，超过阈值的访问量拒绝处理。
+
+    **缺点**：限流容易造成热点，某个时间段内（非单位时间内）来看会超过阈值
+
+  - **令牌桶限流**
+
+    **原理**：每隔一定的时间往桶内放入固定数量的定牌，当请求到来时去容器内先获取令牌，拿到了，开始处理，拿不到拒绝处理或者短暂的等待
+
+  - **漏斗限流**
+
 ## 稳定性 & 高可用
+
+### CAP与BASE
+
+- [谈谈 ACID、CAP 和 BASE](http://guleilab.com/2019/05/05/acid-cap-base/)
+
 ## 服务治理
 ## 分布式一致
 - :star::star:[分布式](https://github.com/CyC2018/CS-Notes/blob/master/notes/%E5%88%86%E5%B8%83%E5%BC%8F.md)
@@ -274,7 +319,7 @@
 # 资料整理
 
 * [architecture.of.internet-product 互联网公司技术架构，微信/淘宝/微博/腾讯/阿里/美团点评/百度/Google/Facebook/Amazon/eBay的架构](https://github.com/davideuler/architecture.of.internet-product)
-* :star::star:📚 CyC Computer Science Learning Notes (技术面试需要掌握的基础知识整理)](https://github.com/CyC2018/CS-Notes)
+* :star::star:📚 [CyC Computer Science Learning Notes (技术面试需要掌握的基础知识整理)](https://github.com/CyC2018/CS-Notes)
 * [😮 advanced-java 互联网 Java 工程师进阶知识完全扫盲](https://github.com/doocs/advanced-java)
 * [technology-talk 汇总java生态圈常用技术框架、开源中间件，系统架构、项目管理、经典架构案例、数据库、常用三方库、线上运维等知识](https://github.com/aalansehaiyang/technology-talk)
 * [architect-awesome 《后端架构师技术图谱》](https://github.com/xingshaocheng/architect-awesome)
