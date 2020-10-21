@@ -2,7 +2,7 @@
 
 # 目录
 
-- [目录](#目录)
+  - [目录](#目录)
    - [网络基础](#网络基础)
       - [TCP协议](#tcp协议)
       - [HTTP/HTTPS](#httphttps)
@@ -25,6 +25,8 @@
             - [Synchronized](#synchronized)
             - [ReentrantLock](#reentrantlock)
          - [J.U.C组件](#juc组件)
+      - [IO](#io)
+         - [NIO](#nio)
       - [JVM](#jvm)
          - [概述](#概述-1)
          - [垃圾回收器](#垃圾回收器)
@@ -46,6 +48,7 @@
       - [RPC框架](#rpc框架)
          - [Dubbo](#dubbo)
       - [消息队列](#消息队列)
+         - [使用消息队列的好处](#使用消息队列的好处)
          - [Kafka](#kafka)
          - [QMQ](#qmq)
    - [数据库](#数据库)
@@ -61,6 +64,7 @@
       - [分布式锁](#分布式锁)
       - [分布式限流](#分布式限流)
       - [稳定性 &amp; 高可用](#稳定性--高可用)
+         - [CAP与BASE](#cap与base)
       - [服务治理](#服务治理)
       - [分布式一致](#分布式一致)
    - [思想设计](#思想设计)
@@ -75,8 +79,11 @@
          - [Spring Boot](#spring-boot-1)
       - [代码风格](#代码风格)
       - [中间件相关](#中间件相关)
+   - [面试](#面试)
+      - [P6阶段](#p6阶段)
    - [个人成长](#个人成长)
    - [资料整理](#资料整理)
+
 
 
 # 网络基础
@@ -139,6 +146,7 @@
 ### NIO
 
 - [Java IO](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20IO.md)
+- [详解NIO与BIO的区别，NIO的运行原理及并发使用场景](https://zhuanlan.zhihu.com/p/54829109)
 
 ## JVM
 
@@ -203,9 +211,17 @@
 
 ## 消息队列
 
+### 使用消息队列的好处
+- **解耦**：允许我们独立的扩展或修改队列两边的处理过程；
+- **可恢复性**：即使一个处理消息的进程挂掉，加入队列中的消息仍然可以在系统恢复后被处理；
+- **缓冲**：有助于解决生产消息和消费消息的处理速度不一致的情况；
+- **削峰**：不会因为突发的超负荷的请求而完全崩溃，消息队列能够使关键组件顶住突发的访问压力；
+- **异步通信**：消息队列允许用户把消息放入队列但不立即处理它。
+
 ### Kafka
 - [Kafka设计解析](http://www.jasongj.com/2015/03/10/KafkaColumn1/)
-- [Kafka技术原理](https://cshihong.github.io/2018/06/02/Kafka%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/)
+- :star::star:[Kafka技术原理](https://cshihong.github.io/2018/06/02/Kafka%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/)
+- :star:[Kafka架构图](https://zhuanlan.zhihu.com/p/38269875)
 ### QMQ
 去哪儿和携程内部使用的消息队列
 - :star::star:[《去哪儿网消息队列设计与实现》](https://www.infoq.cn/article/b4VPvP3m8DA-PM7ZqMGZ?from=timeline&isappinstalled=0)
@@ -314,6 +330,12 @@
 - 《clean code》
 ## 中间件相关
 - 《Redis设计与实现》
+# 面试
+
+## P6阶段
+
+- [最新美团Java面试题目（共3面）](https://youzhixueyuan.com/meituan-senior-java-interview-questions.html)
+
 # 个人成长
 - [如何成为一位「不那么差」的程序员](https://juejin.im/post/5b70cdf6e51d456665220632#heading-19)
 # 资料整理
