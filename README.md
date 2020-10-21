@@ -201,8 +201,13 @@
 - https://javadoop.com/post/spring-aop-source)
 ## MyBatis
 # 中间件
-## ElasticSearch
-参考[es.md](https://github.com/LJWLgl/backend-study/blob/master/es.md)
+
+## 注册中心
+### zookeeper
+
+- :star:[ZooKeeper 相关概念总结【入门】（Snailclimb-JavaGuide）](https://github.com/Snailclimb/JavaGuide/blob/master/docs/system-design/distributed-system/zookeeper/zookeeper-intro.md)
+- :star:[ZooKeeper 相关概念总结【进阶】(Snailclimb-JavaGuide）](https://github.com/Snailclimb/JavaGuide/blob/master/docs/system-design/distributed-system/zookeeper/zookeeper-plus.md)
+- :star:[ZooKeeper 实战](https://github.com/Snailclimb/JavaGuide/blob/master/docs/system-design/distributed-system/zookeeper/zookeeper-in-action.md)
 
 ## RPC框架
 ### Dubbo
@@ -211,20 +216,47 @@
 
 ## 消息队列
 
-### 使用消息队列的好处
-- **解耦**：允许我们独立的扩展或修改队列两边的处理过程；
-- **可恢复性**：即使一个处理消息的进程挂掉，加入队列中的消息仍然可以在系统恢复后被处理；
-- **缓冲**：有助于解决生产消息和消费消息的处理速度不一致的情况；
-- **削峰**：不会因为突发的超负荷的请求而完全崩溃，消息队列能够使关键组件顶住突发的访问压力；
-- **异步通信**：消息队列允许用户把消息放入队列但不立即处理它。
+### 总结
+#### 消息队列对比
+- [消息中间件部署及比较：rabbitMQ、activeMQ、zeroMQ、rocketMQ、Kafka、redis](https://juejin.im/post/6844903626171760653)
+#### 笔记
+1. **使用消息队列的好处**
+  - **解耦**：允许我们独立的扩展或修改队列两边的处理过程；
+  - **可恢复性**：即使一个处理消息的进程挂掉，加入队列中的消息仍然可以在系统恢复后被处理；
+  - **缓冲**：有助于解决生产消息和消费消息的处理速度不一致的情况；
+  - **削峰**：不会因为突发的超负荷的请求而完全崩溃，消息队列能够使关键组件顶住突发的访问压力；
+  - **异步通信**：消息队列允许用户把消息放入队列但不立即处理它。
 
 ### Kafka
+
+#### 基本理解
+
 - [Kafka设计解析](http://www.jasongj.com/2015/03/10/KafkaColumn1/)
 - :star::star:[Kafka技术原理](https://cshihong.github.io/2018/06/02/Kafka%E6%8A%80%E6%9C%AF%E5%8E%9F%E7%90%86/)
 - :star:[Kafka架构图](https://zhuanlan.zhihu.com/p/38269875)
+
+#### 深入理解
+- :star::star:[kafka中文官网](https://kafka.apachecn.org/)
+- [kafka客户端和服务端开发(三)](https://www.cnblogs.com/rickiyang/p/11074194.html)
+- [kafka同步异步消费和消息的偏移量（四](https://www.cnblogs.com/rickiyang/p/11074193.html)
+#### 面试
+- [八年面试生涯，整理了一套Kafka面试题](https://juejin.im/post/6844903889003610119)
+#### 总结
+
+1. ZooKeeper 主要为 Kafka 提供 Broker 和 Topic 的注册以及多个 Partition 的负载均衡等功能。
+2. 在 Kafka 0.9 版本之前消费者偏移量默认被保存在 zookeeper 中，但在 0.9 版本开始 consumer 将位移提交到 Kafka 的一个内部topic（该topic默认有 50 个分区，每个分区 3 个副本）。
+
+
 ### QMQ
+
 去哪儿和携程内部使用的消息队列
 - :star::star:[《去哪儿网消息队列设计与实现》](https://www.infoq.cn/article/b4VPvP3m8DA-PM7ZqMGZ?from=timeline&isappinstalled=0)
+
+# 搜索引擎
+## ElasticSearch
+参考[es.md](https://github.com/LJWLgl/backend-study/blob/master/es.md)
+# 配置中心
+
 # 数据库
 ## Mysql
 
@@ -266,6 +298,12 @@
     - 通过散列可以避免热点。
 - [《HBase性能优化方法总结》](http://dxer.github.io/2016/04/01/hbase-optimize/)
 # 分布式设计
+
+## 负载均衡
+### 算法
+#### 轮询与一致性HASH
+- :star:[负载均衡之随机、轮询、一致性哈希](https://www.cnblogs.com/Stephanie-boke/p/12289732.html)
+
 ## 分布式锁
 - [基于redis的分布式锁实现](https://juejin.im/entry/5a502ac2518825732b19a595)
 ## 分布式限流
