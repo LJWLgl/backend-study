@@ -127,7 +127,10 @@
    - 冷热数据分离，建两个索引分别存放冷热数据
    - 提高节点filesystem cache大小，至少是每个数据节点的一半（比如64G内存的机器，es的jvm内存分配31G，其余的给filesystem cache即lucene）
    - 数据预热，定时任务搜索热词，保证热数据始终在在FileSystem Cache，做到毫秒级缓存
+   - 调小fielddata或禁用fielddata
    - 不要做深分页，如果真的要做Scroll API，生成快照，不可跳页访问
+   - 数据截取（待调研，小红书面试官提供的方案，大概意思是查到符合条件的N条件记录后就返回，不需要查后面的数据）
+   - 可以直接查询主分片，省去路由时间
 
    详细参考：https://cloud.tencent.com/developer/article/1446107
 
