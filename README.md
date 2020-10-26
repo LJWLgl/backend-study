@@ -101,6 +101,10 @@
 
 # 网络基础
 
+## WEB
+
+- [Ajax-解决跨域请求（jsonp、cors）](https://www.cnblogs.com/L-xmin/p/12392400.html)
+
 ## TCP协议
 
 - [图解TCP协议中的三次握手和四次挥手](https://www.jianshu.com/p/9968b16b607e)
@@ -148,8 +152,27 @@
 
 ### HashMap
 
-- [HashMap? ConcurrentHashMap? 相信看完这篇没人能难住你！](https://crossoverjie.top/2018/07/23/java-senior/ConcurrentHashMap/)
+- :star:[HashMap? ConcurrentHashMap? 相信看完这篇没人能难住你！](https://crossoverjie.top/2018/07/23/java-senior/ConcurrentHashMap/)
 - [Java7/8 中的 HashMap 和 ConcurrentHashMap 全解析](https://javadoop.com/post/hashmap)
+- [hashmap面试题](https://www.cnblogs.com/zengcongcong/p/11295349.html)
+
+#### 笔记
+
+1. 负载因子(load factor)在hashmap中起什么作用？超过它会怎么样？
+
+   答：超过阙值（`++size > loadFactor * capacity`， loadFactor默认0.75）会进行扩容操作，概括的讲就是扩容后的数组大小是原数组的2倍，将原来的元素重新hashing放入到新的散列表中去
+
+2. hashmap中indexFor方法，将hash & length-1有什么优点？
+
+   答：[HashMap中神奇的h & （length - 1）运算](https://my.oschina.net/ManderSY/blog/1604790)
+
+3. 多线程下，hashmap的resize()方法为什么容易出现死循环？
+
+   答：[老生常谈，HashMap的死循环](https://juejin.im/post/6844903554264596487)
+
+4. 其他面试题？
+
+   答：[这几道Java集合框架面试题在面试中几乎必问](https://juejin.im/post/6844903664042164232)
 
 ## 并发
 
@@ -488,6 +511,8 @@
 ## P6阶段
 
 - [最新美团Java面试题目（共3面）](https://youzhixueyuan.com/meituan-senior-java-interview-questions.html)
+- [五轮阿里面试题及答案](https://www.jianshu.com/p/c8a271448dcd)
+- [某大佬的20+公司面试题总结和自己的补充](https://www.jianshu.com/p/a61f012e84d5)
 
 # 个人成长
 
@@ -509,5 +534,4 @@
 * [java-knowledge-mind-map](java-knowledge-mind-map)
 * [technology-talk汇总java生态圈常用技术框架](https://github.com/aalansehaiyang/technology-talk)
 * [JCSprout](https://github.com/crossoverJie)
-
-- [3y](https://github.com/ZhongFuCheng3y/3y/)
+* [3y](https://github.com/ZhongFuCheng3y/3y/)
