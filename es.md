@@ -34,7 +34,8 @@
 ### lucene底层结构
 - [Day 7 - Elasticsearch中数据是如何存储的](https://elasticsearch.cn/article/6178)
 - [lucene字典实现原理——FST](https://www.cnblogs.com/bonelee/p/6226185.html):star:
-- [[Lucene底层实现原理，它的索引结构](https://www.cnblogs.com/sessionbest/articles/8689030.html)]:star:
+- [Lucene底层实现原理，它的索引结构](https://www.cnblogs.com/sessionbest/articles/8689030.html):star:
+- [ES系列八、正排索Doc Values和Field Data](https://www.cnblogs.com/wangzhuxing/p/9508784.html)
 
 ### lucene优化
 - [Lucene底层原理和优化经验分享(2)-Lucene优化经验总结](https://blog.csdn.net/njpjsoftdev/article/details/54133548)

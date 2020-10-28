@@ -207,10 +207,11 @@
 
 ## IO
 
-### NIO
+### NIO、BIO、AIO
 
 - [Java IO](https://github.com/CyC2018/CS-Notes/blob/master/notes/Java%20IO.md)
 - [详解NIO与BIO的区别，NIO的运行原理及并发使用场景](https://zhuanlan.zhihu.com/p/54829109)
+- [Redis之IO线程、IO多路复用，BIO、NIO和AIO区别](https://www.pianshen.com/article/19431409578/)
 
 ## JVM
 
@@ -403,6 +404,7 @@
 - [Redis](https://github.com/CyC2018/CS-Notes/blob/master/notes/Redis.md#%E5%85%AD%E9%94%AE%E7%9A%84%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4)
 - [https://mrdear.cn/2018/08/19/middleware/redis--study_guide/](https://mrdear.cn/2018/08/19/middleware/redis--study_guide/)
 - [Redis设计与实现](https://redisbook.readthedocs.io/en/latest/index.html)
+- [Redis之IO线程、IO多路复用，BIO、NIO和AIO区别](https://www.pianshen.com/article/19431409578/)
 
 ## HBase
 
