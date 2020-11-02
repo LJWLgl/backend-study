@@ -105,14 +105,24 @@
    参考：
 
    - [堆内存:大小和交换](https://www.elastic.co/guide/cn/elasticsearch/guide/current/heap-sizing.html)
-
-   - [ 限制内存使用](https://www.elastic.co/guide/cn/elasticsearch/guide/current/_limiting_memory_usage.html)
-
+- [ 限制内存使用](https://www.elastic.co/guide/cn/elasticsearch/guide/current/_limiting_memory_usage.html)
    - https://www.elastic.co/guide/en/elasticsearch/reference/current/circuit-breaker.html
+- [Elasticsearch 常用配置参数总结]()
+  
+3. es match query（全文查询参数）有哪些参数？
 
-   - [Elasticsearch 常用配置参数总结]()
+   - operator：默认or，or或者and
+   - minimum_should_match：operate为or下最小匹配数
+   - analyzer：指定的分词器，使用mapping时指定的分词器
+   - lenient：默认值是 false ， 表示用来在查询时如果数据类型不匹配且无法转换时会报错。如果设置成 true 会忽略错误。
+   - fuzzniess：模糊查询时指定的编辑距离，默认为AUTO（字符串长度）
+   - prefix_length：不会“模糊化”的初始字符数。这有助于减少必须检查的术语数量，默认为0
+   - max_expansions：fuzzy查询将扩展到 的最大术语数。默认为50，设置小，有助于优化查询
+   - transpositions：是否支持模糊转置（ab→ ba），默认是false
+   - synonyms：同义词，自定义分词器的可以使用
+   参考：[要搞懂 Elasticsearch Match Query，看这篇就够了](https://segmentfault.com/a/1190000017110948)
 
-3. es如何实现聚合操作aggregation的？
+4. es如何实现聚合操作aggregation的？
 
    答：借助DocVlaue和FieldData实现桶和指标聚合操作
 
@@ -120,7 +130,7 @@
 
    - [elasticsearch系列六：聚合分析（聚合分析简介、指标聚合、桶聚合）](https://www.cnblogs.com/leeSmall/p/9215909.html)
 
-4. Elasticsearch如何做到亿级数据查询毫秒级返回？
+5. Elasticsearch如何做到亿级数据查询毫秒级返回？
 
    答：主要从以下几方面优化
 
@@ -134,17 +144,17 @@
 
    详细参考：https://cloud.tencent.com/developer/article/1446107
 
-5. es如何实现深度翻页？
+6. es如何实现深度翻页？
 
    - [ElasticSearch如何支持深度分页](http://arganzheng.life/deep-pagination-in-elasticsearch.html)
 
-6. 说一下es的分布式架构原理 / es是如何实现分布式的
+7. 说一下es的分布式架构原理 / es是如何实现分布式的
 
    答：es分布式的核心在于在多个机器上启动多个es实例，组成es集群。一个index（索引）会包含多个分片，每个分片都是一个最小工作单元，每个分片存储部分数据，每个主分片又有主分片和副分片，主分片接收读写请求，而副分片只接收读请求，承担读负载。
 
    参考：https://mp.weixin.qq.com/s/3D6ikLDrPHpKsU6RSz012Q（第一点）
 
-7. 说一下es的写入数据流程以及底层原理
+8. 说一下es的写入数据流程以及底层原理
 
    答： primary shard（主分片内部流程如下） 
 
@@ -167,7 +177,7 @@
    - [深入理解Elasticsearch写入过程](https://zhuanlan.zhihu.com/p/94915597)
    - [动态更新索引](https://www.elastic.co/guide/cn/elasticsearch/guide/current/dynamic-indices.html)
 
-8. elasticsearch了解多少，说说你们公司 es 的集群架构，索引数据大小，分片有多少，以及一些调优手段 。
+9. elasticsearch了解多少，说说你们公司 es 的集群架构，索引数据大小，分片有多少，以及一些调优手段 。
 
    答：我们es采用双机房单集群部署，每个集群三台物理机，后期打算迁往k8s
 
@@ -203,7 +213,7 @@
 
    还有一些调优方式，请参考：[ES官方调优指南翻译](http://wangnan.tech/post/elasticsearch-how-to/)
 
-9. es有几种node？每个node职责和作用是怎样的？
+10. es有几种node？每个node职责和作用是怎样的？
 
    答：es主要有4种节点类型，分别是master、data、coordinating（协作节点）、ingest，对应职责分别如下：
 
@@ -221,7 +231,7 @@
 
    
 
-10. elasticsearch的倒排索引是什么？
+11. elasticsearch的倒排索引是什么？
 
    答：倒排索引，是通过分词策略，形成了词和文章的映射关系表，这种词典+映射表即为倒排索引。有了倒排索引，就能实现 o（1）时间复杂度的效率检索文章了，极大的提高了检索效率。
 

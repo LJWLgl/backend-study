@@ -77,6 +77,7 @@
 
 ### ES查询语句
 - [es各种查询](https://chenjiabing666.github.io/2018/09/02/es%E5%90%84%E7%A7%8D%E6%9F%A5%E8%AF%A2/)
+- [ElasticSearch-查询语句详解](https://juejin.im/post/6844903890396135438)
 ### ES计算文本相似度
 ### ES算分原理
 - [ElasticSearch评分分析 explian 解释和一些查询理解](https://www.cnblogs.com/hapjin/p/9677753.html):star::star:

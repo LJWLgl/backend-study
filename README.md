@@ -144,7 +144,8 @@
 ## 语法
 
 - [精选30道Java笔试题解答](https://www.cnblogs.com/lanxuezaipiao/p/3371224.html)
-  - 30道题中包含很多容易在日常开发中日益被忽视的细节
+
+  30道题中包含很多容易在日常开发中日益被忽视的细节
 
 ## 集合
 
@@ -278,6 +279,8 @@
 - [Spring Boot 1.x基础教程](http://blog.didispace.com/spring-boot-learning-1x/)
 - [Spring Boot 2.x基础教程](http://blog.didispace.com/spring-boot-learning-2x/)
 - https://javadoop.com/post/spring-aop-source)
+### 自动装配
+- [SpringBoot自动装配原理初探](https://juejin.im/post/6844904137746808839)
 
 ## MyBatis
 
