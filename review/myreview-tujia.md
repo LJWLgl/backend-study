@@ -1,6 +1,11 @@
-# 知识点脑图
+## 收到的offer及意向offer
+
+- [x] 大搜车
+- [x] 携程
+- [ ] 拼多多
+- [ ] 口碑
+## 知识点脑图
 <div align="center"> <img src="http://tc.ganzhiqiang.wang/java-review-knowlege.png"><p>Java知识点脑图</p> </div><br/>
-# 2019
 ## 2019.6 拼多多——AI引擎方向
 ### 一面
 面试基本上都围绕项目，特别是笔者用Flink做的用户实时推荐。。。
@@ -138,16 +143,6 @@ public T pop() {
     - 答：用延迟消息去check
 - 【场景题】两步操作，一步是本地DB，一步是RPC，如何保证原子性？
 - 你还有什么想问我的？
-
-## 总结
-
-- [x] 大搜车
-
-- [x] 携程
-
-- [ ] 拼多多
-
-- [ ] 口碑
 
   
 
